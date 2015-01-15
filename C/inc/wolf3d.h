@@ -1,8 +1,8 @@
 #ifndef WOLF3D_H
 # define WOLF3D_H
 
-#include "keysymdef.h"
-#include "mlx.h"
+#include <X11/keysym.h>
+#include <mlx.h>
 #include "libft.h"
 
 # define W_WIDTH 1900
