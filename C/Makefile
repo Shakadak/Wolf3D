@@ -20,7 +20,8 @@ POBJ	:=	$(addprefix $(DIROBJ)/, $(OBJ))
 C_FLAG	:=	-Wall -Wextra -Werror
 O_FLAG	:=	-O3
 
-C_INC	:=	-I $(DIRINC) -I $(DIRLIB)/$(DIRINC)ludes
+C_INC	:=	-I $(DIRINC) -I $(DIRLIB)/$(DIRINC)ludes \
+			-I /usr/X11/includes/X11
 
 L_FLAG	:=	-L $(DIRLIB) -lft \
 			-L /usr/X11/lib -lmlx -lXext -lX11

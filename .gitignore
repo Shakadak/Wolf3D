@@ -29,3 +29,4 @@ target/
 *.exe
 *.out
 *.app
+/C/wolf3d
