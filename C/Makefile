@@ -21,7 +21,7 @@ C_FLAG	:=	-Wall -Wextra -Werror
 O_FLAG	:=	-O3
 
 C_INC	:=	-I $(DIRINC) -I $(DIRLIB)/$(DIRINC)ludes \
-			-I /usr/X11/includes/X11
+			-I /usr/x11/include/X11
 
 L_FLAG	:=	-L $(DIRLIB) -lft \
 			-L /usr/X11/lib -lmlx -lXext -lX11
