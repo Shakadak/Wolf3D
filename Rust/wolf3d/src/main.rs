@@ -10,7 +10,7 @@ use sdl2::keycode::KeyCode;
 fn main()
 {
     sdl2::init(sdl2::INIT_VIDEO);
-    let window = match Window::new("rust-sdl2 demo: Video", WindowPos::PosCentered,
+    let window = match Window::new("Wolf3D", WindowPos::PosCentered,
                                    WindowPos::PosCentered, 800, 600, OPENGL)
     {
         Ok(window) => window,
