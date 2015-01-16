@@ -9,12 +9,12 @@
 # define W_HEIGHT 1200
 # define W_TITLE "Wolf3D"
 
-typedef struct	s_tupleint
+typedef struct	s_ituple
 {
 	int			fst;
 	int			snd;
 	int			thd;
-}				t_tupleint;
+}				t_ituple;
 
 void			*init();
 void			*new_window(void *env);
