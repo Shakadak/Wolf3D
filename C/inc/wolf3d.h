@@ -9,7 +9,14 @@
 # define W_HEIGHT 1200
 # define W_TITLE "Wolf3D"
 
-void	*init();
-void	*new_window(void *env);
-int		key_hook(int key_code);
+typedef struct	s_ituple
+{
+	int			fst;
+	int			snd;
+	int			thd;
+}				t_ituple;
+
+void			*init();
+void			*new_window(void *env);
+int				key_hook(int key_code);
 #endif
