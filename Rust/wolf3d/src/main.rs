@@ -1,4 +1,5 @@
 extern crate sdl2;
+extern crate core;
 
 use sdl2::video::{Window, WindowPos, OPENGL};
 use sdl2::render::{RenderDriverIndex, ACCELERATED, Renderer};
@@ -8,6 +9,8 @@ use sdl2::event::Event::{Quit, KeyDown};
 use sdl2::keycode::KeyCode;
 
 use std::num::Float;
+
+mod player;
 fn main()
 {
     sdl2::init(sdl2::INIT_VIDEO);
@@ -26,17 +29,15 @@ fn main()
     let _ = renderer.clear();
     renderer.present();
 
-    let x: u64 = 0;
-    let y: u64 = 0;
-    let r = 0f64;
+    let player = player::Player{coordinate: player::Point{x: 0, y: 0}, direction: 0f64};
     let width = 320f64;
     let height = 200f64;
-    let fov = 60f64;
+    let fov = 60f64.to_radians();
     let plane_center = (width / 2f64, height / 2f64);
-    let d  = (width / 2f64) / (fov / 2f64).to_radians().tan();
-    let step = (fov / width).to_radians();
+    let d  = (width / 2f64) / (fov / 2f64).tan();
+    let step = (fov / width);
     let map = vec![vec![1u8, 1, 1, 1], vec![1, 0, 0, 1], vec![1, 0, 0, 1], vec![1, 1, 1, 1]];
-    println!("{:?}", cast(fov, (96, 224), map));
+    println!("{:?}", horizontal_cast(fov, (96, 224), map));
     loop
     {
         match poll_event()
@@ -65,11 +66,11 @@ fn raycast(step: f64, width: f64, fov: f64, r: f64)
     }
 }
 
-fn cast(angle: f64, pos: (u64, u64), map: Vec<Vec<u8>>) -> (u64, u64)
+fn horizontal_cast(angle: f64, pos: (u64, u64), map: Vec<Vec<u8>>) -> (u64, u64)
 {
     let (x, y) = pos;
-    let r = angle.to_radians().tan();
-    let (a_y, ya) = if 0f64 <= angle && angle < 180f64
+    let r = angle.tan();
+    let (a_y, ya) = if 0f64 <= angle && angle < core::f64::consts::PI
     {
         ((y / 64) * 64 - 1, -64)
     }
@@ -77,9 +78,8 @@ fn cast(angle: f64, pos: (u64, u64), map: Vec<Vec<u8>>) -> (u64, u64)
     {
         ((y / 64) * 64 + 64, 64)
     };
-    let a_x = x + ((y - a_y) as f64 / angle.to_radians().tan()) as u64;
+    let a_x = x + ((y - a_y) as f64 / angle.tan()) as u64;
     let xa = (64f64 / r) as u64;
-    println!("{}", check(a_x / 64, a_y / 64, map));
     (a_x, a_y)
 }
 
