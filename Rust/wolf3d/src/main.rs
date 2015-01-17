@@ -1,5 +1,4 @@
 extern crate sdl2;
-extern crate core;
 
 use sdl2::video::{Window, WindowPos, OPENGL};
 use sdl2::render::{RenderDriverIndex, ACCELERATED, Renderer};
@@ -10,7 +9,10 @@ use sdl2::keycode::KeyCode;
 
 use std::num::Float;
 
-mod player;
+use raycaster::*;
+
+pub mod raycaster;
+
 fn main()
 {
     sdl2::init(sdl2::INIT_VIDEO);
@@ -29,15 +31,13 @@ fn main()
     let _ = renderer.clear();
     renderer.present();
 
-    let player = player::Player{coordinate: player::Point{x: 0, y: 0}, direction: 0f64};
+    let player = player::Player{coordinate: player::Point{x: 96, y: 224}, direction: 60f64.to_radians(), fov: 60f64.to_radians()};
     let width = 320f64;
     let height = 200f64;
-    let fov = 60f64.to_radians();
     let plane_center = (width / 2f64, height / 2f64);
-    let d  = (width / 2f64) / (fov / 2f64).tan();
-    let step = (fov / width);
+    let d  = (width / 2f64) / (player.fov / 2f64).tan();
     let map = vec![vec![1u8, 1, 1, 1], vec![1, 0, 0, 1], vec![1, 0, 0, 1], vec![1, 1, 1, 1]];
-    println!("{:?}", horizontal_cast(fov, (96, 224), map));
+    horizontal_cast(player, map);
     loop
     {
         match poll_event()
@@ -51,39 +51,4 @@ fn main()
         }
     }
     sdl2::quit();
-}
-
-fn raycast(step: f64, width: f64, fov: f64, r: f64)
-{
-    let mut start = r - (fov / 2f64);
-
-    for _ in range(0, width as u64)
-    {
-        // cast
-        // trace
-        // distance
-        start += step;
-    }
-}
-
-fn horizontal_cast(angle: f64, pos: (u64, u64), map: Vec<Vec<u8>>) -> (u64, u64)
-{
-    let (x, y) = pos;
-    let r = angle.tan();
-    let (a_y, ya) = if 0f64 <= angle && angle < core::f64::consts::PI
-    {
-        ((y / 64) * 64 - 1, -64)
-    }
-    else
-    {
-        ((y / 64) * 64 + 64, 64)
-    };
-    let a_x = x + ((y - a_y) as f64 / angle.tan()) as u64;
-    let xa = (64f64 / r) as u64;
-    (a_x, a_y)
-}
-
-fn check(col: u64, row: u64, map: Vec<Vec<u8>>) -> bool
-{
-    map[row as usize][col as usize] != 0
 }

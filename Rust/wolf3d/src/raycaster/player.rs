@@ -1,11 +1,12 @@
 pub struct Point
 {
-    pub x:  i64,
-    pub y:  i64,
+    pub x:  isize,
+    pub y:  isize,
 }
 
 pub struct Player
 {
     pub coordinate: Point,
     pub direction:  f64,
+    pub fov:  f64,
 }
