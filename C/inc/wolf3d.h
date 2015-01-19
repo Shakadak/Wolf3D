@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:37:48 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/19 17:39:11 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/19 18:10:51 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,9 @@ typedef struct	s_player
 	double		fov;
 }				t_player;
 
-void			*init();
-void			*new_window(void *env);
-int				key_hook(int key_code);
 int				check(const int col, const int row, const t_map *map);
+t_map			get_map(char const *file);
+void			*init();
+int				key_hook(int key_code);
+void			*new_window(void *env);
 #endif
