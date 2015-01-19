@@ -6,71 +6,74 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/16 15:40:13 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/16 17:09:14 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/19 17:33:14 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-int	cast(const int f_x, const int xstep, const int f_y, const int ystep, const char **map)
+int	cast(t_player const p, t_point current, t_point const step, t_map const *m)
 {
-	if (check(f_x / GRAIN, f_y / GRAIN, map))
+	if (check(current.x / GRAIN, current.y / GRAIN, m))
 	{
-		return (tuple(f_x, f_y));
+		return (sqrt(pow(p.coordinate.x - current.x, 2) +
+		pow(p.coordinate.x - current.x, 2)));
 	}
 	else
 	{
-		return (cast(f_x + xstep, xstep, f_y + ystep, ystep, map));
+		current.x += step.x;
+		current.y += step.y;
+		return (cast(p, current, step, m));
 	}
 }
 
-int	horizontal_cast(const double angle, const t_player player, const char **map)
+int	horizontal_cast(t_player const player, t_map const *map)
 {
-	int	a_x;
-	int	a_y;
-	int	xstep;
-	int	ystep;
+	t_point	current;
+	t_point	step;
 
-	if (0 < angle && angle < M_PI)
+	if (0 < player.direction && player.direction < M_PI)
 	{
-		a_y = player.y / 64 * 64 - 1;
-		ystep = -GRAIN;
+		current.y = player.coordinate.y / 64 * 64 - 1;
+		step.y = -GRAIN;
 	}
-	else if (M_PI < angle && angle < 2 * M_PI)
+	else if (M_PI < player.direction && player.direction < 2 * M_PI)
 	{
-		a_y = player.y / 64 * 64 + 64;
-		ystep = GRAIN;
+		current.y = player.coordinate.y / 64 * 64 + 64;
+		step.y = GRAIN;
 	}
 	else
 	{
 		return (-1);
 	}
-	a_x = x + (y -a_y) / tan(angle);
-	xstep = 64 / tan(angle);
-	return (cast(a_x, xstep, a_y, ystep, map));
+	current.x = player.coordinate.x
+		+ (player.coordinate.y - current.y) / tan(player.direction);
+	step.x = 64 / tan(player.direction);
+	return (cast(player, current, step, map));
 }
 
-int	vertical_cast(const double angle, const t_player player, const char **map)
+int	vertical_cast(t_player const player, t_map const *map)
 {
-	t_ituple	first;
-	t_ituple	step;
+	t_point	current;
+	t_point	step;
 
-	if (M_PI_2 < angle && angle < M_PI + M_PI_2)
+	if (M_PI_2 < player.direction && player.direction < M_PI + M_PI_2)
 	{
-		first.fst = player.x / 64 * 64 - 1;
-		step.fst = -GRAIN;
+		current.x = player.coordinate.x / 64 * 64 - 1;
+		step.x = -GRAIN;
 	}
-	else if ((M_PI + M_PI_2 < angle && angle <= 2 * M_PI)
-			|| (0 <= angle && angle < M_PI_2))
+	else if ((M_PI + M_PI_2 < player.direction && player.direction <= 2 * M_PI)
+			|| (0 <= player.direction && player.direction < M_PI_2))
 	{
-		first.fst = player.y / 64 * 64 + 64;
-		step.fst = GRAIN;
+		current.x = player.coordinate.y / 64 * 64 + 64;
+		step.x = GRAIN;
 	}
 	else
 	{
 		return (-1);
 	}
-	first.snd = first.fst + (player.y - first.snd) / tan(angle);
-	step.snd = 64 / tan(angle);
-	return (cast(first, step, map));
+	current.y = player.coordinate.y + (player.coordinate.x - current.x)
+				* tan(player.direction);
+	step.y = 64 * tan(player.direction);
+	return (cast(player, current, step, map));
 }
