@@ -1,6 +1,8 @@
 SRC	:=	main.c \
-		window_initialization.c \
-		hook_initialization.c
+		check.c \
+		ray.c \
+		hook_initialization.c \
+		window_initialization.c
 
 OBJ := $(OBJ) $(SRC:.c=.o)
 
