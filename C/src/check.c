@@ -6,11 +6,20 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/16 15:11:29 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/16 15:11:41 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/19 16:59:20 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-bool	check(const unsigned int col, const unsigned int row, const char **map)
+#include "wolf3d.h"
+
+int	check(const int col, const int row, const t_map *map)
 {
-	return (map[row][col] == 1);
+	if (col < 0 || row < 0 || col >= map->width || row >= map->height)
+	{
+		return (!0);
+	}
+	else
+	{
+		return (map->map[row][col] == 1);
+	}
 }

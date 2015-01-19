@@ -6,13 +6,13 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/15 18:42:08 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/15 18:42:24 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/19 17:41:06 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void	*init()
+void	*init(void)
 {
 	return (mlx_init());
 }
