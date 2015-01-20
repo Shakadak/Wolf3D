@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:37:48 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/20 14:37:49 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/20 15:16:06 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,5 @@ t_player		get_player(t_map const map);
 void			*init();
 int				key_hook(int key_code);
 void			*new_window(void *env);
+void			hook_init(void *win);
 #endif

@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/15 15:57:48 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/20 14:30:02 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/20 15:17:35 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int main(int argc, char **argv)
 {
 	t_map		map;
 	t_player	player;
+	void		*win;
+	void		*mlx;
 
 	if (argc != 2)
 	{
@@ -25,7 +27,9 @@ int main(int argc, char **argv)
 	}
 	map = get_map(argv[1]);
 	player = get_player(map);
-	new_window(init());
-	sleep(5);
+	mlx = init();
+	win = new_window(mlx);
+	hook_init(win);
+	mlx_loop(mlx);
 	return (0);
 }
