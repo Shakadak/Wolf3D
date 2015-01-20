@@ -1,5 +1,6 @@
 SRC	:=	main.c \
 		check.c \
+		draw.c \
 		ft_fatal.c \
 		hook_initialization.c \
 		map_init.c \

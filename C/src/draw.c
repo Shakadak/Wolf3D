@@ -1,32 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/15 15:57:48 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/20 16:55:44 by npineau          ###   ########.fr       */
+/*   Created: 2015/01/20 17:39:25 by npineau           #+#    #+#             */
+/*   Updated: 2015/01/20 18:29:55 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "wolf3d.h"
 
-int main(int argc, char **argv)
+void	put_pixel(t_pixel const pixel, t_env env)
 {
-	t_env	env;
+	int	color;
 
-	if (argc != 2)
-	{
-		ft_putendl_fd("Usage: ./wolf3d path/to/map", 2);
-		return (1);
-	}
-	env.map = get_map(argv[1]);
-	env.player = get_player(env.map);
-	env.mlx = init();
-	env.win = new_window(env.mlx);
-	hook_init(env);
-	mlx_loop(env.mlx);
-	return (0);
+	color = mlx_get_color_value(env.mlx, pixel.color.identifier);
+	env.img.data[pixel.coordinate.y % env.img.lsize
+	+ pixel.coordinate.x * env.img.bits] = color;
 }

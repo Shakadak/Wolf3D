@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/15 18:42:08 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/20 16:03:14 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/20 18:25:17 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,13 @@ void	*new_window(void *mlx)
 	return (win);
 }
 
-void	*new_image(void *mlx)
+t_img	new_image(void *mlx)
 {
-	void	*img;
+	t_img	img;
 
-	img = mlx_new_image(mlx, W_WIDTH, W_HEIGHT);
-	if (img == NULL)
+	img.img = mlx_new_image(mlx, W_WIDTH, W_HEIGHT);
+	if (img.img == NULL)
 		ft_fatal("mlx_new_image", 1);
+	img.data = mlx_get_data_addr(img.img, &img.bits, &img.lsize, &img.endian);
 	return (img);
 }
