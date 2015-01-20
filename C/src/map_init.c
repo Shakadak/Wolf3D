@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:47:35 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/20 14:39:38 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/20 15:03:29 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include "wolf3d.h"
+#include <stdio.h>/////////////////////////////
 
 static t_map	init_map(char const *const line)
 {
@@ -62,6 +63,7 @@ t_map			get_map(char const *const file)
 		map.map[i] = ft_strnew(map.width);
 		fill_line(map.map[i], line, map.width);
 		free(line);
+		++i;
 	}
 	map.map[i] = NULL;
 	close(fd);
