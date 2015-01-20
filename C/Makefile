@@ -9,6 +9,8 @@ DIRLIB	:=	libft
 
 ### FILES ###
 
+HEAD := $(DIRINC)/$(NAME).h
+
 OBJ	:=
 
 include $(DIRSRC)/sources.mk
