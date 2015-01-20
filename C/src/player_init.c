@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/20 14:30:23 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/20 15:04:51 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/20 19:39:19 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_player	get_player(t_map const map)
 			{
 				new.coordinate.y = j * GRAIN + GRAIN / 2;
 				new.coordinate.x = i * GRAIN + GRAIN / 2;
+				new.coordinate.z = GRAIN / 2;
 				return (new);
 			}
 			++i;

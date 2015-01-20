@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:37:48 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/20 18:34:00 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/20 19:38:10 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct		s_point
 {
 	int				x;
 	int				y;
+	int				z;
 }					t_point;
 
 typedef union		u_color
