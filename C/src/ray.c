@@ -6,13 +6,14 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/16 15:40:13 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/20 13:47:36 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/20 14:39:14 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-static int	cast(t_player const p, t_point current, t_point const step, t_map const m)
+static int	cast(t_player const p,
+		t_point current, t_point const step, t_map const m)
 {
 	if (check(current.x / GRAIN, current.y / GRAIN, m))
 	{

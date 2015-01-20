@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:37:48 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/20 13:45:04 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/20 14:37:49 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define W_HEIGHT 1200
 # define W_TITLE "Wolf3D"
 # define GRAIN 64
+# define PLAYER_ORIGIN 2
 
 typedef struct	s_ituple
 {
@@ -51,8 +52,9 @@ typedef struct	s_player
 }				t_player;
 
 int				check(int const col, int const row, t_map const map);
-void			ft_fatal(char const * const msg);
+void			ft_fatal(char const *const msg, int const flag);
 t_map			get_map(char const *file);
+t_player		get_player(t_map const map);
 void			*init();
 int				key_hook(int key_code);
 void			*new_window(void *env);

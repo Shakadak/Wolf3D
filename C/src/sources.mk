@@ -3,6 +3,7 @@ SRC	:=	main.c \
 		ft_fatal.c \
 		hook_initialization.c \
 		map_init.c \
+		player_init.c \
 		ray.c \
 		window_initialization.c
 

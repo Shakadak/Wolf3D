@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:47:35 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/20 13:23:39 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/20 14:39:38 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include "wolf3d.h"
 
-static t_map	init_map(char const * const line)
+static t_map	init_map(char const *const line)
 {
 	t_map	new;
 	char	**dim;
@@ -24,11 +24,11 @@ static t_map	init_map(char const * const line)
 	new.width = ft_atoi(dim[0]);
 	new.height = ft_atoi(dim[1]);
 	ft_freesplit((void **)dim);
-	new.map = (char **) malloc(new.height * sizeof(char *));
+	new.map = (char **)malloc((new.height + 1) * sizeof(char *));
 	return (new);
 }
 
-static void		fill_line(char *dest, char const *src, int const width)
+static void		fill_line(char *dest, char const *const src, int const width)
 {
 	char	**tab;
 	int		i;
@@ -44,7 +44,7 @@ static void		fill_line(char *dest, char const *src, int const width)
 	ft_freesplit((void **)tab);
 }
 
-t_map			get_map(char const * const file)
+t_map			get_map(char const *const file)
 {
 	int		fd;
 	int		i;
@@ -52,7 +52,7 @@ t_map			get_map(char const * const file)
 	t_map	map;
 
 	if ((fd = open(file, O_RDONLY)) == -1)
-		ft_fatal(file);
+		ft_fatal(file, 1);
 	get_next_line(fd, &line);
 	map = init_map(line);
 	free(line);
@@ -63,6 +63,7 @@ t_map			get_map(char const * const file)
 		fill_line(map.map[i], line, map.width);
 		free(line);
 	}
+	map.map[i] = NULL;
 	close(fd);
 	return (map);
 }

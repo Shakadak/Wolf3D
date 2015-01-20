@@ -1,31 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   player_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/15 15:57:48 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/20 14:30:02 by npineau          ###   ########.fr       */
+/*   Created: 2015/01/20 14:30:23 by npineau           #+#    #+#             */
+/*   Updated: 2015/01/20 14:34:14 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "wolf3d.h"
 
-int main(int argc, char **argv)
+t_player	get_player(t_map const map)
 {
-	t_map		map;
-	t_player	player;
+	t_player	new;
+	int			i;
+	int			j;
 
-	if (argc != 2)
+	new.direction = M_PI_2;
+	new.fov = M_PI / 3;
+	j = 0;
+	while (j < map.height)
 	{
-		ft_putendl_fd("Usage: ./wolf3d path/to/map", 2);
-		return (1);
+		i = 0;
+		while (i < map.width)
+		{
+			if (map.map[j][i] == PLAYER_ORIGIN)
+			{
+				new.coordinate.y = j * GRAIN + GRAIN / 2;
+				new.coordinate.x = i * GRAIN + GRAIN / 2;
+				return (new);
+			}
+			++i;
+		}
+		++j;
 	}
-	map = get_map(argv[1]);
-	player = get_player(map);
-	new_window(init());
-	sleep(5);
-	return (0);
+	ft_fatal("Player original coordinate not found.", 0);
+	return (new);
 }
