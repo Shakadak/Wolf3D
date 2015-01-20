@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:47:35 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/20 12:12:32 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/20 13:23:39 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ static t_map	init_map(char const * const line)
 	return (new);
 }
 
-static void		fill_line(char *dest, char const *src)
+static void		fill_line(char *dest, char const *src, int const width)
 {
-	char			**tab;
-	unsigned int	i;
+	char	**tab;
+	int		i;
 
 	tab = ft_strxsplit(src, ft_isspace);
 	i = 0;
-	while (tab[i])
+	while (tab[i] && i < width)
 	{
 		dest[i] = ft_atoi(tab[i]);
 		++i;
@@ -51,7 +51,8 @@ t_map			get_map(char const * const file)
 	char	*line;
 	t_map	map;
 
-	fd = open(file, O_RDONLY);
+	if ((fd = open(file, O_RDONLY)) == -1)
+		ft_fatal(file);
 	get_next_line(fd, &line);
 	map = init_map(line);
 	free(line);
@@ -59,7 +60,7 @@ t_map			get_map(char const * const file)
 	while (get_next_line(fd, &line) > 0 && i < map.height)
 	{
 		map.map[i] = ft_strnew(map.width);
-		fill_line(map.map[i], line);
+		fill_line(map.map[i], line, map.width);
 		free(line);
 	}
 	close(fd);

@@ -6,13 +6,13 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/16 15:40:13 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/19 17:33:14 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/20 13:47:36 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-int	cast(t_player const p, t_point current, t_point const step, t_map const *m)
+static int	cast(t_player const p, t_point current, t_point const step, t_map const m)
 {
 	if (check(current.x / GRAIN, current.y / GRAIN, m))
 	{
@@ -27,7 +27,7 @@ int	cast(t_player const p, t_point current, t_point const step, t_map const *m)
 	}
 }
 
-int	horizontal_cast(t_player const player, t_map const *map)
+static int	horizontal_cast(t_player const player, t_map const map)
 {
 	t_point	current;
 	t_point	step;
@@ -52,7 +52,7 @@ int	horizontal_cast(t_player const player, t_map const *map)
 	return (cast(player, current, step, map));
 }
 
-int	vertical_cast(t_player const player, t_map const *map)
+static int	vertical_cast(t_player const player, t_map const map)
 {
 	t_point	current;
 	t_point	step;
@@ -76,4 +76,19 @@ int	vertical_cast(t_player const player, t_map const *map)
 				* tan(player.direction);
 	step.y = 64 * tan(player.direction);
 	return (cast(player, current, step, map));
+}
+
+int			raycast(t_player const player, t_map const map)
+{
+	int	dv;
+	int	dh;
+
+	dh = horizontal_cast(player, map);
+	dv = vertical_cast(player, map);
+	if (dv >= 0 && dh < 0)
+		return (dv);
+	else if (dv < 0 && dh >= 0)
+		return (dh);
+	else
+		return (dv < dh ? dv : dh);
 }
