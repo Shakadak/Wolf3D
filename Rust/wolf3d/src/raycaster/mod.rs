@@ -32,18 +32,14 @@ pub fn raycast(renderer: &Renderer, player: &Player, map: &Vec<Vec<u8>>, width: 
             (Some(a), Some(b))  => if a < b {a} else {b},
             (None, None)        => 0
         };
-        //println!("distance: {}", distance);
         let correct_distance = distance as f64 * (player.direction - current_direction).cos();
-        //println!("correct_distance: {}", correct_distance);
         let slice_height = (64f64 / correct_distance * ((width / 2f64) / (player.fov / 2f64).tan())) as usize;
-        println!("================slice_height: {}", slice_height);
         let top = SDL_Point{x: column, y: (height as i32 / 2i32) - (slice_height as i32 / 2i32)};
         let bot = SDL_Point{x: column, y: top.y + slice_height as i32};
         let _ = renderer.set_draw_color(Color::RGB(0, 0, 240));
         renderer.draw_line(top, bot);
         current_direction += step;
     }
-    println!("-------------------------------------------------------------------------------------");
     renderer.present();
 }
 
@@ -57,6 +53,29 @@ fn cast(player: Player, pos: Point, step: Point, map: &Vec<Vec<u8>>) -> usize
     {
         cast(player, Point{x: pos.x + step.x, y: pos.y + step.y}, step, map)
     }
+}
+
+pub fn horizontal_cast(player: Player, map: &Vec<Vec<u8>>) -> Option<usize>
+{
+    let (a_y, ystep) = if 0f64 < player.direction && player.direction < PI
+    {
+        (Some((player.coordinate.y / 64) * 64 - 1), -64)
+    }
+    else if PI < player.direction && player.direction < PI_2
+    {
+        (Some((player.coordinate.y / 64) * 64 + 64), 64)
+    }
+    else
+    {
+        (None, 0)
+    };
+    if a_y == None
+    {
+        return None;
+    }
+    let a_x = player.coordinate.x + ((player.coordinate.y - a_y.unwrap()) as f64 / player.direction.tan()) as isize;
+    let xstep = (64f64 / player.direction.tan()) as isize;
+    Some(cast(player, Point{x: a_x, y: a_y.unwrap()}, Point{x: xstep, y: ystep}, map))
 }
 
 fn vertical_cast(player: Player, map: &Vec<Vec<u8>>) -> Option<usize>
@@ -81,29 +100,6 @@ fn vertical_cast(player: Player, map: &Vec<Vec<u8>>) -> Option<usize>
     let a_y = player.coordinate.y + ((player.coordinate.x - a_x.unwrap()) as f64 * player.direction.tan()) as isize;
     let ystep = (64f64 * player.direction.tan()) as isize;
     Some(cast(player, Point{x: a_x.unwrap(), y: a_y}, Point{x: xstep, y: ystep}, map))
-}
-
-pub fn horizontal_cast(player: Player, map: &Vec<Vec<u8>>) -> Option<usize>
-{
-    let (a_y, ystep) = if 0f64 < player.direction && player.direction < PI
-    {
-        (Some((player.coordinate.y / 64) * 64 - 1), -64)
-    }
-    else if PI < player.direction && player.direction < PI_2
-    {
-        (Some((player.coordinate.y / 64) * 64 + 64), 64)
-    }
-    else
-    {
-        (None, 0)
-    };
-    if a_y == None
-    {
-        return None;
-    }
-    let a_x = player.coordinate.x + ((player.coordinate.y - a_y.unwrap()) as f64 / player.direction.tan()) as isize;
-    let xstep = (64f64 / player.direction.tan()) as isize;
-    Some(cast(player, Point{x: a_x, y: a_y.unwrap()}, Point{x: xstep, y: ystep}, map))
 }
 
 fn check(col: isize, row: isize, map: &Vec<Vec<u8>>) -> bool
