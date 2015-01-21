@@ -6,7 +6,7 @@
 #    By: npineau <npineau@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/20 12:15:41 by npineau           #+#    #+#              #
-#    Updated: 2015/01/21 17:14:23 by npineau          ###   ########.fr        #
+#    Updated: 2015/01/21 17:36:19 by npineau          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,8 @@ NAME		:=	libftmlx.a
 
 DIRSRC		:=	src
 DIROBJ		:=	obj
+DIRINI		:=	$(DIRSRC)/ini
+DIRMSC		:=	$(DIRSRC)/msc
 DIRPIX		:=	$(DIRSRC)/pix
 DIRINC		:=	inc
 
@@ -23,6 +25,8 @@ DIRINC		:=	inc
 
 ### FILES: SOURCES ###
 
+include $(DIRINI)/sources.mk
+include $(DIRMSC)/sources.mk
 include $(DIRPIX)/sources.mk
 
 ### FILES: OBJECTS ###
