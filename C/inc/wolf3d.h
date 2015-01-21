@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:37:48 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/21 14:42:48 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/21 14:59:23 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include <mlx.h>
 # include "libft.h"
 
-# define W_WIDTH 1366
-# define W_HEIGHT 768
+# define W_WIDTH 640
+# define W_HEIGHT 480
 # define W_TITLE "Wolf3D"
 # define GRAIN 64
 # define PLAYER_ORIGIN 2

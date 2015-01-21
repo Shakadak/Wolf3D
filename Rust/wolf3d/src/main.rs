@@ -17,7 +17,7 @@ fn main()
 {
     sdl2::init(sdl2::INIT_VIDEO);
     let window = match Window::new("Wolf3D", WindowPos::PosCentered,
-                                   WindowPos::PosCentered, 640, 480, OPENGL)
+                                   WindowPos::PosCentered, 1366, 768, OPENGL)
     {
         Ok(window) => window,
         Err(err) => panic!("failed to create window: {}", err)
@@ -29,11 +29,18 @@ fn main()
     };
 
     let mut player = player::Player{coordinate: player::Point{x: 3 * 64 + 32, y: 3 * 64 + 32}, direction: 45f64.to_radians(), fov: 60f64.to_radians()};
-    let width = 640f64;
-    let height = 480f64;
+    let width = 1366f64;
+    let height = 768f64;
     let plane_center = (width / 2f64, height / 2f64);
     let d  = (width / 2f64) / (player.fov / 2f64).tan();
-    let map = vec![vec![1u8, 1, 1, 1, 1, 1, 1], vec![1, 0, 0, 0, 0, 0, 1], vec![1, 0, 0, 0, 0, 0, 1], vec![1, 0, 0, 0, 0, 0, 1], vec![1, 0, 0, 0, 0, 0, 1], vec![1, 0, 0, 0, 0, 0, 1], vec![1, 1, 1, 1, 1, 1, 1]];
+    let map = vec![
+        vec![1u8, 1, 1, 1, 1, 1, 1],
+        vec![1, 0, 0, 0, 0, 0, 1],
+        vec![1, 0, 0, 0, 0, 0, 1],
+        vec![1, 0, 0, 0, 0, 0, 1],
+        vec![1, 0, 0, 0, 0, 0, 1],
+        vec![1, 1, 0, 1, 0, 1, 1],
+        vec![1, 1, 1, 1, 1, 1, 1]];
     loop
     {
         match poll_event()

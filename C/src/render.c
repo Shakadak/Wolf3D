@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/21 10:59:15 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/21 14:13:43 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/21 15:11:34 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,21 @@ int		render(t_env *env)
 {
 	t_player	tmp;
 	int			i;
-	int			distance;
-	int			height;
+	double		len;
 	double		step;
 
 	tmp.coordinate = env->player.coordinate;
 	tmp.fov = env->player.fov;
-	step = tmp.fov / W_WIDTH;
-	tmp.direction = correct_angle(env->player.direction + tmp.fov / 2);
+	step = tmp.fov / (double)W_WIDTH;
+	tmp.direction = correct_angle(env->player.direction - tmp.fov / 2);
 	i = 0;
 	while (i < W_WIDTH)
 	{
-		distance = raycast(tmp, env->map);
-		distance = distance * cos(env->player.direction - tmp.direction);
-		height = (double)GRAIN / distance * (double)((W_WIDTH / 2) / tan(tmp.fov / 2));
-		draw_column(env, correct_height(height), i);
-		tmp.direction = correct_angle(tmp.direction - step);
+		len = (double)raycast(tmp, env->map);
+		len = len * cos(env->player.direction - tmp.direction);
+		len = ceil((double)GRAIN / len * ((double)(W_WIDTH / 2) / tan(tmp.fov / 2)));
+		draw_column(env, correct_height(len), i);
+		tmp.direction = correct_angle(tmp.direction + step);
 		++i;
 	}
 	mlx_put_image_to_window(env->mlx, env->win, env->img.img, 0, 0);

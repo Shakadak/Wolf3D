@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/16 15:40:13 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/21 14:43:37 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/21 15:22:34 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,7 @@ static int	horizontal_cast(t_player const player, t_map const map)
 		step.y = GRAIN;
 	}
 	else
-	{
 		return (-1);
-	}
 	current.x = player.coordinate.x
 		+ (player.coordinate.y - current.y) / tan(player.direction);
 	step.x = 64 / tan(player.direction);
@@ -70,9 +68,7 @@ static int	vertical_cast(t_player const player, t_map const map)
 		step.x = GRAIN;
 	}
 	else
-	{
 		return (-1);
-	}
 	current.y = player.coordinate.y + (player.coordinate.x - current.x)
 				* tan(player.direction);
 	step.y = 64 * tan(player.direction);
@@ -86,8 +82,6 @@ int			raycast(t_player const player, t_map const map)
 
 	dh = horizontal_cast(player, map);
 	dv = vertical_cast(player, map);
-	ft_putendl_fd(ft_itoa(dv), 2);
-	ft_putendl_fd(ft_itoa(dh), 2);
 	if (dv >= 0 && dh < 0)
 		return (dv);
 	else if (dv < 0 && dh >= 0)
