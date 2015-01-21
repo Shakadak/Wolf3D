@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:37:48 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/20 19:38:10 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/21 11:22:48 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ typedef struct		s_point
 
 typedef union		u_color
 {
-	unsigned int	identifier;
-	char			component[4];
+	unsigned int	id;
+	unsigned char	rgb[4];
 }					t_color;
 
 typedef struct		s_pixel
@@ -83,11 +83,16 @@ typedef struct		s_env
 }					t_env;
 
 int					check(int const col, int const row, t_map const map);
+double				correct_angle(double incorrect);
+void				draw_column(t_env *env, int height, int col);
 void				ft_fatal(char const *const msg, int const flag);
 t_map				get_map(char const *file);
 t_player			get_player(t_map const map);
+void				hook_init(t_env env);
 void				*init();
 int					key_hook(int key_code, t_env *env);
 void				*new_window(void *env);
-void				hook_init(t_env env);
+t_img				new_image(void *mlx);
+int					raycast(t_player const player, t_map const map);
+int					render(t_env *env);
 #endif

@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/15 18:45:24 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/20 17:22:15 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/21 11:17:54 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,5 @@ int		key_hook(int key_code, t_env *env)
 void	hook_init(t_env const env)
 {
 	mlx_key_hook(env.win, key_hook, (void *)&env);
+	mlx_loop_hook(env.mlx, render, (void *)&env);
 }

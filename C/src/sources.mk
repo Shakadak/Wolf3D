@@ -1,4 +1,5 @@
 SRC	:=	main.c \
+		angle.c \
 		check.c \
 		draw.c \
 		ft_fatal.c \
@@ -6,6 +7,7 @@ SRC	:=	main.c \
 		map_init.c \
 		player_init.c \
 		ray.c \
+		render.c \
 		window_initialization.c
 
 OBJ := $(OBJ) $(SRC:.c=.o)
