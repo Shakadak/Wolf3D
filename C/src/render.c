@@ -6,10 +6,11 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/21 10:59:15 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/21 11:21:00 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/21 12:18:08 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "wolf3d.h"
 
 void	clear(t_env *env)
@@ -34,9 +35,14 @@ int	render(t_env *env)
 	{
 		distance = raycast(tmp, env->map);
 		distance = distance * cos(env->player.direction - tmp.direction);
-		height = GRAIN / distance * (W_WIDTH / 2) / tan(tmp.fov / 2);
+		height = (double)GRAIN / distance * (double)((W_WIDTH / 2) / tan(tmp.fov / 2));
+		//ft_putstr_fd("distance : ", 2);
+		//ft_putendl_fd(ft_itoa(distance), 2);
+		//printf("cosu ici: %f\n", cos(env->player.direction - tmp.direction));
+		//printf("tanuki: %f\n", (double)((W_WIDTH / 2) / tan(tmp.fov / 2)));
+		//ft_putendl_fd(ft_itoa(height), 2);
 		draw_column(env, height, i);
-		tmp.fov = correct_angle(tmp.fov - step);
+		tmp.direction = correct_angle(tmp.direction - step);
 		++i;
 	}
 	mlx_put_image_to_window(env->mlx, env->win, env->img.img, 0, 0);
