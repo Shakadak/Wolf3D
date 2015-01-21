@@ -6,11 +6,11 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/21 10:59:15 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/21 12:18:08 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/21 13:52:26 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include <unistd.h>
 #include "wolf3d.h"
 
 void	clear(t_env *env)
@@ -18,7 +18,16 @@ void	clear(t_env *env)
 	ft_bzero(env->img.data, W_WIDTH * W_HEIGHT * env->img.bits);
 }
 
-int	render(t_env *env)
+int		correct_height(int incorrect)
+{
+	if (incorrect > W_HEIGHT)
+		return(W_HEIGHT);
+	if (incorrect < 0)
+		return (0);
+	return (incorrect);
+}
+
+int		render(t_env *env)
 {
 	t_player	tmp;
 	int			i;
@@ -36,15 +45,12 @@ int	render(t_env *env)
 		distance = raycast(tmp, env->map);
 		distance = distance * cos(env->player.direction - tmp.direction);
 		height = (double)GRAIN / distance * (double)((W_WIDTH / 2) / tan(tmp.fov / 2));
-		//ft_putstr_fd("distance : ", 2);
-		//ft_putendl_fd(ft_itoa(distance), 2);
-		//printf("cosu ici: %f\n", cos(env->player.direction - tmp.direction));
-		//printf("tanuki: %f\n", (double)((W_WIDTH / 2) / tan(tmp.fov / 2)));
-		//ft_putendl_fd(ft_itoa(height), 2);
-		draw_column(env, height, i);
+		draw_column(env, correct_height(height), i);
 		tmp.direction = correct_angle(tmp.direction - step);
 		++i;
 	}
 	mlx_put_image_to_window(env->mlx, env->win, env->img.img, 0, 0);
+	clear(env);
+	usleep(1000000 / 60);
 	return (1);
 }

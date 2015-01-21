@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/15 18:45:24 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/21 11:17:54 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/21 13:10:24 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int		key_hook(int key_code, t_env *env)
 	if (key_code == XK_Left || key_code == XK_Right)
 	{
 		env->player.direction += (key_code == XK_Left ? M_PI_4 : -M_PI_4);
+		env->player.direction = correct_angle(env->player.direction);
 	}
 	return (0);
 }

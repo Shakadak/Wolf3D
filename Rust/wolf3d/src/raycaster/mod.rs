@@ -30,7 +30,7 @@ pub fn raycast(renderer: &Renderer, player: &Player, map: &Vec<Vec<u8>>, width: 
             (None, Some(d))     => d,
             (Some(d), None)     => d,
             (Some(a), Some(b))  => if a < b {a} else {b},
-            (None, None)        => 0 
+            (None, None)        => 0
         };
         //println!("distance: {}", distance);
         let correct_distance = distance as f64 * (player.direction - current_direction).cos();
