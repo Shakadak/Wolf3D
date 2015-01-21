@@ -59,4 +59,7 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
+run: $(NAME)
+	./$(NAME) map/shitty_square.map
+
 re: fclean all

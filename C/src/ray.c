@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/16 15:40:13 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/21 12:19:04 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/21 14:43:37 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ int			raycast(t_player const player, t_map const map)
 
 	dh = horizontal_cast(player, map);
 	dv = vertical_cast(player, map);
+	ft_putendl_fd(ft_itoa(dv), 2);
+	ft_putendl_fd(ft_itoa(dh), 2);
 	if (dv >= 0 && dh < 0)
 		return (dv);
 	else if (dv < 0 && dh >= 0)

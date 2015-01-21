@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/21 10:59:15 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/21 13:52:26 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/21 14:13:43 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	clear(t_env *env)
 {
-	ft_bzero(env->img.data, W_WIDTH * W_HEIGHT * env->img.bits);
+	ft_bzero(env->img.data, W_WIDTH * W_HEIGHT * (env->img.bits / 8));
 }
 
 int		correct_height(int incorrect)
