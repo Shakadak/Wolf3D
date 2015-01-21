@@ -22,6 +22,15 @@ typedef struct		s_pixel
 	t_color			color;
 }					t_pixel;
 
+typedef struct		s_img
+{
+	void			*img;
+	char			*data;
+	int				bits;
+	int				lsize;
+	int				endian;
+}					t_img;
+
 void	put_pixel_to_image(t_img *img, t_pixel const pixel);
 
 void	ft_fatal(char const *const msg, int const flag);
