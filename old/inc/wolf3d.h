@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/16 11:36:25 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/21 16:25:49 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/21 16:47:05 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ typedef struct		s_map
 {
 	int				width;
 	int				height;
-	char			**map;
+	int				**map;
 }					t_map;
 
 typedef struct	s_player

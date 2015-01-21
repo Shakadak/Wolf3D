@@ -6,13 +6,13 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/16 11:28:34 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/21 16:18:10 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/21 16:46:45 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-void	bump(t_player *p, int world[MAPW][MAPH])
+void	bump(t_player *p, int **world)
 {
 	while (p->hit == 0)
 	{

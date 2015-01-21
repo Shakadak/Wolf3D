@@ -6,27 +6,26 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/16 11:30:37 by npineau           #+#    #+#             */
-/*   Updated: 2014/01/19 16:50:40 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/21 16:56:37 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
 
-void	trace(t_screen *s, t_cam *c, t_player *p, int world[MAPH][MAPW])
+void	trace(t_env *env, t_cam *c)
 {
 	int		x;
 
 	x = 0;
-	SDL_SetRenderDrawColor(s->r, 0, 0, 0, 255);
-	SDL_RenderClear(s->r);
-	while (x < WIDTH)
+	clear_screen(env);
+	while (x < W_WIDTH)
 	{
-		init_player(c, p, x);
-		init_step_dist(p);
-		bump(p, world);
-		color(p, s);
-		draw(line_height(p), s, x);
+		init_player(c, env->player, x);
+		init_step_dist(env->player);
+		bump(env->playerp, env->map.map);
+		color(env, env->player);
+		draw(env, line_height(env->player), x);
 		x++;
 	}
-	SDL_RenderPresent(s->r);
+	mlx_put_image_to_window(env->mlx, env->win, env->img.img, 0, 0);
 }
