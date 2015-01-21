@@ -28,7 +28,7 @@ fn main()
         Err(err) => panic!("failed to create renderer: {}", err)
     };
 
-    let mut player = player::Player{coordinate: player::Point{x: 3 * 64 + 32, y: 3 * 64 + 32}, direction: 45f64.to_radians(), fov: 60f64.to_radians()};
+    let mut player = player::Player{coordinate: player::Point{x: 3 * 64 + 32, y: 3 * 64 + 32}, direction: 90f64.to_radians(), fov: 60f64.to_radians()};
     let width = 1366f64;
     let height = 768f64;
     let plane_center = (width / 2f64, height / 2f64);

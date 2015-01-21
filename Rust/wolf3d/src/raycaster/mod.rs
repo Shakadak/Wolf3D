@@ -33,6 +33,7 @@ pub fn raycast(renderer: &Renderer, player: &Player, map: &Vec<Vec<u8>>, width: 
             (None, None)        => 0
         };
         let correct_distance = distance as f64 * (player.direction - current_direction).cos();
+        println!("{}", distance);
         let slice_height = (64f64 / correct_distance * ((width / 2f64) / (player.fov / 2f64).tan())) as usize;
         let top = SDL_Point{x: column, y: (height as i32 / 2i32) - (slice_height as i32 / 2i32)};
         let bot = SDL_Point{x: column, y: top.y + slice_height as i32};
