@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/20 14:30:23 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/20 19:39:19 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/21 17:08:36 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ t_player	get_player(t_map const map)
 		{
 			if (map.map[j][i] == PLAYER_ORIGIN)
 			{
-				new.coordinate.y = j * GRAIN + GRAIN / 2;
-				new.coordinate.x = i * GRAIN + GRAIN / 2;
+				new.coordinate.y = j;
+				new.coordinate.x = i;
 				new.coordinate.z = GRAIN / 2;
 				return (new);
 			}
