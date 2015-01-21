@@ -24,4 +24,6 @@ typedef struct		s_pixel
 
 void	put_pixel_to_image(t_img *img, t_pixel const pixel);
 
+void	ft_fatal(char const *const msg, int const flag);
+
 #endif
