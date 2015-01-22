@@ -6,15 +6,15 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/22 11:26:29 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/22 14:02:29 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/22 14:18:30 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBMLX_H
 # define LIBMLX_H
 
-#include <mlx.h>
-#include <string.h>
+# include <mlx.h>
+# include <string.h>
 
 typedef struct		s_pos
 {
@@ -61,6 +61,10 @@ t_win				new_window(void *mlx, int width, int height, char *title);
 void				put_pixel_to_image(t_img *img, t_pix const pixel);
 void				clear_image(t_img *img);
 void				draw_line(t_img *img, t_pix start, t_pix end);
+
+t_color				linear_interpolation(t_pixel const target,
+		t_pixel const start,
+		t_pixel const end);
 
 void				ft_fatal(char const *const msg, int const flag);
 

@@ -6,7 +6,7 @@
 #    By: npineau <npineau@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/20 12:15:41 by npineau           #+#    #+#              #
-#    Updated: 2015/01/22 13:05:20 by npineau          ###   ########.fr        #
+#    Updated: 2015/01/22 14:10:26 by npineau          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ DIROBJ		:=	obj
 DIRINI		:=	$(DIRSRC)/ini
 DIRMSC		:=	$(DIRSRC)/msc
 DIRPIX		:=	$(DIRSRC)/pix
+DIRCOL		:=	$(DIRSRC)/color
 DIRINC		:=	inc
 DIRFT		:=	../libft
 
@@ -31,6 +32,7 @@ LIBFT		:=	$(DIRFT)/libft.a
 include $(DIRINI)/sources.mk
 include $(DIRMSC)/sources.mk
 include $(DIRPIX)/sources.mk
+include $(DIRCOL)/sources.mk
 
 ### FILES: PATHS ###
 
