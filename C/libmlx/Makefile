@@ -6,7 +6,7 @@
 #    By: npineau <npineau@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/20 12:15:41 by npineau           #+#    #+#              #
-#    Updated: 2015/01/22 12:57:42 by npineau          ###   ########.fr        #
+#    Updated: 2015/01/22 13:05:20 by npineau          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,7 @@ COMPIL		=	$(CC) $(C_FLAG) $(O_FLAG) $(C_OPT)
 
 ### RULES ###
 
-all: $(LIBFT) $(NAME)
+all: $(NAME)
 
 ### RULES: ARCHIVE ###
 
@@ -65,7 +65,7 @@ $(LIBFT):
 	$(MAKE) -C $(DIRFT)
 ### RULES: MISC ###
 
-$(POBJ): |$(DIROBJ)
+$(POBJ): $(LIBFT) |$(DIROBJ)
 
 $(DIROBJ):
 	mkdir $(DIROBJ)
