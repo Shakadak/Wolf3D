@@ -6,11 +6,11 @@
 #    By: npineau <npineau@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/20 12:15:41 by npineau           #+#    #+#              #
-#    Updated: 2015/01/21 17:36:19 by npineau          ###   ########.fr        #
+#    Updated: 2015/01/22 11:14:40 by npineau          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		:=	libftmlx.a
+NAME		:=	libmlx.a
 
 ### DIRECTORIES ###
 
@@ -29,14 +29,10 @@ include $(DIRINI)/sources.mk
 include $(DIRMSC)/sources.mk
 include $(DIRPIX)/sources.mk
 
-### FILES: OBJECTS ###
-
-OBJ			:=	$(PIX:.c=.o)
-
 ### FILES: PATHS ###
 
 POBJ		:=	$(addprefix $(DIROBJ)/, $(OBJ))
-INC			:=	$(DIRINC)/libftmlx.h
+INC			:=	$(DIRINC)/libmlx.h
 
 ### ARCHIVE ###
 

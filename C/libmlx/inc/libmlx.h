@@ -2,6 +2,7 @@
 # define LIBMLX_H
 
 #include <mlx.h>
+#include <string.h>
 
 typedef struct		s_point
 {
@@ -32,6 +33,14 @@ typedef struct		s_img
 	int				lsize;
 	int				endian;
 }					t_img;
+
+typedef struct		s_win
+{
+	void			*win;
+	int				width;
+	int				height;
+	char			*title;
+}					t_win;
 
 void				*new_mlx(void);
 void				*new_window(void *mlx);
