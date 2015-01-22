@@ -25,17 +25,19 @@ typedef struct		s_pixel
 typedef struct		s_img
 {
 	void			*img;
+	int				width;
+	int				height;
 	char			*data;
 	int				bits;
 	int				lsize;
 	int				endian;
 }					t_img;
 
-void	*new_mlx(void);
-void	*new_window(void *mlx);
+void				*new_mlx(void);
+void				*new_window(void *mlx);
 
-void	put_pixel_to_image(t_img *img, t_pixel const pixel);
+void				put_pixel_to_image(t_img *img, t_pixel const pixel);
 
-void	ft_fatal(char const *const msg, int const flag);
+void				ft_fatal(char const *const msg, int const flag);
 
 #endif

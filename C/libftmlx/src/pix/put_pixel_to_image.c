@@ -1,4 +1,4 @@
-#include "libftmlx.h"
+#include "libmlx.h"
 
 void	put_pixel_to_image(t_img *img, t_pixel const pixel)
 {
