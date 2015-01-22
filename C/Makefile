@@ -60,6 +60,6 @@ fclean: clean
 	rm -f $(NAME)
 
 run: $(NAME)
-	./$(NAME) map/shitty_square.map
+	./$(NAME) map/llapillo.map
 
 re: fclean all

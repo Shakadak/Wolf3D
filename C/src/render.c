@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/21 10:59:15 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/21 15:58:17 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/22 12:18:16 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int		render(t_env *env)
 	step = tmp.fov / (double)W_WIDTH;
 	tmp.direction = correct_angle(env->player.direction - tmp.fov / 2);
 	i = 0;
+	clear(env);
 	while (i < W_WIDTH)
 	{
 		len = (double)raycast(tmp, env->map);
@@ -49,7 +50,6 @@ int		render(t_env *env)
 		++i;
 	}
 	mlx_put_image_to_window(env->mlx, env->win, env->img.img, 0, 0);
-	clear(env);
 	usleep(1000000 / 60);
 	return (1);
 }

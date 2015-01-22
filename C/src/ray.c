@@ -6,11 +6,12 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/16 15:40:13 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/21 16:00:40 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/22 12:04:25 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+#include <stdio.h>///////
 
 static int	cast(t_player const p,
 		t_point current, t_point const step, t_map const m)
@@ -20,6 +21,7 @@ static int	cast(t_player const p,
 
 	if (check(current.x / GRAIN, current.y / GRAIN, m))
 	{
+		printf("CURRENT _X_ : %d, CURRENT _Y_ : %d\n", current.x / GRAIN, current.y / GRAIN);
 		x =(p.coordinate.x - current.x) * (p.coordinate.x - current.x);
 		y =(p.coordinate.y - current.y) * (p.coordinate.y - current.y);
 		return (sqrt(x + y));
@@ -44,13 +46,13 @@ static int	horizontal_cast(t_player const player, t_map const map)
 	}
 	else if (M_PI < player.direction && player.direction < 2 * M_PI)
 	{
-		current.y = (player.coordinate.y / GRAIN) * GRAIN + GRAIN - 1;
+		current.y = (player.coordinate.y / GRAIN) * GRAIN + GRAIN;
 		step.y = GRAIN;
 	}
 	else
 		return (-1);
 	current.x = player.coordinate.x
-		+ (player.coordinate.y - current.y) / tan(player.direction);
+		+ (double)(player.coordinate.y - current.y) / tan(player.direction);
 	step.x = GRAIN / tan(player.direction);
 	return (cast(player, current, step, map));
 }
@@ -68,7 +70,7 @@ static int	vertical_cast(t_player const player, t_map const map)
 	else if ((M_PI + M_PI_2 < player.direction && player.direction <= 2 * M_PI)
 			|| (0 <= player.direction && player.direction < M_PI_2))
 	{
-		current.x = (player.coordinate.y / GRAIN) * GRAIN + GRAIN - 1;
+		current.x = (player.coordinate.y / GRAIN) * GRAIN + GRAIN;
 		step.x = GRAIN;
 	}
 	else

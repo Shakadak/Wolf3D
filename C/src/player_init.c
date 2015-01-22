@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/20 14:30:23 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/20 19:39:19 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/22 12:05:59 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_player	get_player(t_map const map)
 	int			j;
 
 	new.direction = M_PI_2;
-	new.fov = M_PI / 3;
+	new.fov = M_PI / 2;
 	j = 0;
 	while (j < map.height)
 	{
