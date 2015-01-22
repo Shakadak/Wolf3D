@@ -1,5 +1,5 @@
-#ifndef LIBFTMLX_H
-# define LIBFTMLX_H
+#ifndef LIBMLX_H
+# define LIBMLX_H
 
 #include <mlx.h>
 
@@ -30,6 +30,9 @@ typedef struct		s_img
 	int				lsize;
 	int				endian;
 }					t_img;
+
+void	*new_mlx(void);
+void	*new_window(void *mlx);
 
 void	put_pixel_to_image(t_img *img, t_pixel const pixel);
 

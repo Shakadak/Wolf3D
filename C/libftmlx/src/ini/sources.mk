@@ -1,4 +1,6 @@
-INI	:=	window_initialization.c
+INI	:=	new_mlx.c \
+		new_image.c \
+		new_window.c
 
 OBJ := $(OBJ) $(INI:.c=.o)
 
