@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libmlx.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/01/22 11:26:29 by npineau           #+#    #+#             */
+/*   Updated: 2015/01/22 11:28:18 by npineau          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LIBMLX_H
 # define LIBMLX_H
 
@@ -43,7 +55,8 @@ typedef struct		s_win
 }					t_win;
 
 void				*new_mlx(void);
-void				*new_window(void *mlx);
+t_img				new_image(void *mlx, int width, int height);
+t_win				new_window(void *mlx, int width, int height, char *title);
 
 void				put_pixel_to_image(t_img *img, t_pixel const pixel);
 
