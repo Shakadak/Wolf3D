@@ -6,12 +6,12 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/15 20:36:22 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/21 16:19:08 by npineau          ###   ########.fr       */
+/*   Updated: 2014/01/19 19:02:11 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "wolf3d.h"
+#include "wolf.h"
 
 #define ROT 0.1
 #define SPEED 0.25

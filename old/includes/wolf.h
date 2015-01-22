@@ -6,29 +6,17 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/16 11:36:25 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/21 16:47:05 by npineau          ###   ########.fr       */
+/*   Updated: 2014/01/19 18:43:08 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WOLF3D_H
-# include <SDL2/SDL.h>
-
-# define WOLF3D_H
+#ifndef WOLF_H
+# include "SDL.h"
+# define WOLF_H
 # define MAPW	23
 # define MAPH	23
 # define WIDTH	640
 # define HEIGHT	480
-
-# include <math.h>
-# include <X11/keysym.h>
-# include <mlx.h>
-# include "libft.h"
-
-# define W_WIDTH 1366
-# define W_HEIGHT 768
-# define W_TITLE "Wolf3D"
-# define GRAIN 64
-# define PLAYER_ORIGIN 2
 
 typedef struct	s_coo
 {
@@ -51,32 +39,6 @@ typedef struct	s_cam
 	double		oldtime;
 }				t_cam;
 
-typedef struct		s_point
-{
-	int				x;
-	int				y;
-	int				z;
-}					t_point;
-
-typedef union		u_color
-{
-	unsigned int	id;
-	unsigned char	rgb[4];
-}					t_color;
-
-typedef struct		s_pixel
-{
-	t_point			coordinate;
-	t_color			color;
-}					t_pixel;
-
-typedef struct		s_map
-{
-	int				width;
-	int				height;
-	int				**map;
-}					t_map;
-
 typedef struct	s_player
 {
 	t_ico		map;
@@ -93,27 +55,9 @@ typedef struct	s_player
 
 typedef struct		s_screen
 {
-	void			*w;
-	void			*r;
+	SDL_Window		*w;
+	SDL_Renderer	*r;
 }					t_screen;
-
-typedef struct		s_img
-{
-	void			*img;
-	char			*data;
-	int				bits;
-	int				lsize;
-	int				endian;
-}					t_img;
-
-typedef struct		s_env
-{
-	void			*mlx;
-	void			*win;
-	t_img			img;
-	t_player		player;
-	t_map			map;
-}					t_env;
 
 void	raycast(int world[MAPH][MAPW]);
 void	bump(t_player *p, int world[MAPH][MAPW]);

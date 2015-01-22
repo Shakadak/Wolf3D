@@ -6,12 +6,12 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/16 11:27:27 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/21 16:18:34 by npineau          ###   ########.fr       */
+/*   Updated: 2014/01/19 16:49:57 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
-#include "wolf3d.h"
+#include "wolf.h"
 
 void	init_player(t_cam *c, t_player *p, int x)
 {

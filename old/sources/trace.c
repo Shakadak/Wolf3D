@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   trace.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/19 13:41:16 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/21 16:23:56 by npineau          ###   ########.fr       */
+/*   Created: 2014/01/16 11:30:37 by npineau           #+#    #+#             */
+/*   Updated: 2014/01/19 16:50:40 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "wolf.h"
 
-int	main(void)
+void	trace(t_screen *s, t_cam *c, t_player *p, int world[MAPH][MAPW])
 {
-	t_env	env;
+	int		x;
 
-	if (argc != 2)
+	x = 0;
+	SDL_SetRenderDrawColor(s->r, 0, 0, 0, 255);
+	SDL_RenderClear(s->r);
+	while (x < WIDTH)
 	{
-		ft_putendl_fd("Usage: ./wolf3d path/to/map", 2);
-		return (1);
+		init_player(c, p, x);
+		init_step_dist(p);
+		bump(p, world);
+		color(p, s);
+		draw(line_height(p), s, x);
+		x++;
 	}
-	env.map = get_map(argv[1]);
-	env.player = get_player(env.map);
-	env.mlx = init();
-	env.win = new_window(env.mlx);
-	env.img = new_image(env.mlx);
-	hook_init(env);
-	mlx_loop(env.mlx);
-	return (0);
-	raycast(world);
+	SDL_RenderPresent(s->r);
 }

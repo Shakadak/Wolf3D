@@ -6,12 +6,12 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/16 11:28:09 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/21 16:18:37 by npineau          ###   ########.fr       */
+/*   Updated: 2014/01/19 16:50:05 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "wolf3d.h"
+#include "wolf.h"
 
 void	init_step_dist(t_player *p)
 {

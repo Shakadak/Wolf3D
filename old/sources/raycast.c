@@ -1,22 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   raycast.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/16 11:26:30 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/21 16:18:30 by npineau          ###   ########.fr       */
+/*   Created: 2014/01/19 14:37:31 by npineau           #+#    #+#             */
+/*   Updated: 2014/01/19 18:32:30 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
-#define SDLWP	SDL_WINDOWPOS_UNDEFINED
-#define SDLF	SDL_WINDOW_SHOWN
+#include "wolf.h"
 
-void	init(t_screen *screen)
+void	raycast(int world[MAPH][MAPW])
 {
-	SDL_Init(SDL_INIT_VIDEO);
-	screen->w = SDL_CreateWindow("Wolf3D", SDLWP, SDLWP, WIDTH, HEIGHT, SDLF);
-	screen->r = SDL_CreateRenderer(screen->w, -1, SDL_RENDERER_ACCELERATED);
+	t_cam		c;
+	t_screen	s;
+	t_player	p;
+	int			mod;
+
+	c.pos.x = 2;
+	c.pos.y = 2;
+	c.dir.x = -0.707107;
+	c.dir.y = -0.707107;
+	c.plane.x = 0.466690;
+	c.plane.y = -0.466690;
+	c.time = 0;
+	c.oldtime = 0;
+	init(&s);
+	trace(&s, &c, &p, world);
+	while ((mod = move(&c, world)))
+	{
+		if (mod == 2)
+			trace(&s, &c, &p, world);
+	}
+	close(&s);
 }

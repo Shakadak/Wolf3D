@@ -1,65 +1,78 @@
-NAME	:=	wolf3d
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: npineau <npineau@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2014/01/06 15:13:22 by npineau           #+#    #+#              #
+#    Updated: 2014/01/19 18:57:57 by npineau          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-### DIRECTORIES ###
+NAME = wolf3d
 
-DIRSRC	:=	src
-DIROBJ	:=	obj
-DIRINC	:=	inc
-DIRLIB	:=	libft
+FLAG = -O3 -Wall -Wextra -Werror
 
-### FILES ###
+SRCDIR = sources
 
-HEAD := $(DIRINC)/$(NAME).h
+OBJDIR = objects
 
-OBJ	:=
+INCDIR = includes
 
-include $(DIRSRC)/sources.mk
+LIB = -L SDL2/lib -lSDL2 -lm
 
-POBJ	:=	$(addprefix $(DIROBJ)/, $(OBJ))
+SDLH = SDL2/include/SDL2/
 
-### COMPILATION VARIABLES ###
+SRC = trace.c \
+	  raycast.c \
+	  main.c \
+	  color.c \
+	  bump.c \
+	  draw.c \
+	  init_step_dist.c \
+	  init.c \
+	  init_player.c \
+	  close.c \
+	  line_height.c \
+	  move.c
 
-C_FLAG	:=	-Wall -Wextra -Werror
-O_FLAG	:=	-O3
+SRCPREF = $(addprefix $(SRCDIR)/, $(SRC))
 
-C_INC	:=	-I $(DIRINC) -I $(DIRLIB)/$(DIRINC)ludes \
-			-I /usr/x11/include
+OBJ = $(SRC:.c=.o)
 
-L_FLAG	:=	-L $(DIRLIB) -lft \
-			-L /usr/X11/lib -lmlx -lXext -lX11
+OBJPREF = $(addprefix $(OBJDIR)/, $(OBJ))
 
-COMPIL	= $(CC) -o $@ -c $< $(C_INC) $(C_FLAG) $(O_FLAG)
-LINK	= $(CC) -o $@ $^ $(L_FLAG)
+$(NAME): $(OBJPREF)
+	gcc -o $@ $^ $(LIB)
 
+$(OBJDIR)/%.o: $(SRCDIR)/%.c $(INCDIR)/wolf.h
+	clang -o $@ -c $< -I $(INCDIR) -I $(SDLH) $(FLAG)
 
-### RULES ###
+$(OBJDIR):
+	@mkdir $(OBJDIR)
 
-.PHONY: all clean fclean re
-
-all: $(PLIB) $(NAME)
-
-$(POBJ): |$(DIROBJ)
-
-$(DIROBJ):
-	mkdir $(DIROBJ)
-
-$(NAME): $(POBJ)
-	$(LINK)
-
-### LIBFT ###
-
-$(PLIB):
-	make -C $(DIRLIB)
-
-### MISC ###
+SDL2:
+	mkdir -p SDL2/junk
+	wget http://www.libsdl.org/release/SDL2-2.0.1.tar.gz
+	tar xf SDL2-2.0.1.tar.gz
+	( cd SDL2-2.0.1 \
+		&& ./configure --prefix=$(shell pwd)/SDL2/ \
+		&& $(MAKE) && $(MAKE) install )
+	mv SDL2-2.0.1.tar.gz SDL2-2.0.1 SDL2/junk
 
 clean:
-	rm -rf $(DIROBJ)
+	@echo "Removing $(OBJPREF)."
+	@rm -f $(OBJPREF)
 
 fclean: clean
-	rm -f $(NAME)
-
-run: $(NAME)
-	./$(NAME) map/shitty_square.map
+	@echo "Removing $(NAME), $(OBJDIR), SDL2."
+	@rm -Rf $(NAME) $(OBJDIR) SDL2
 
 re: fclean all
+
+all: SDL2 $(OBJDIR) $(NAME)
+
+.PHONY: clean fclean re all SDL2
+
+# Credits to aviala for the SDL2 rule.

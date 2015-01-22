@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycast.c                                          :+:      :+:    :+:   */
+/*   bump.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/19 14:37:31 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/21 16:25:10 by npineau          ###   ########.fr       */
+/*   Created: 2014/01/16 11:28:34 by npineau           #+#    #+#             */
+/*   Updated: 2014/01/19 18:00:36 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf.h"
 
-void	raycast(t_env *env)
+void	bump(t_player *p, int world[MAPW][MAPH])
 {
-	t_cam		c;
-	t_screen	s;
-	t_player	p;
-	int			mod;
-
-	c.pos.x = 2;
-	c.pos.y = 2;
-	c.dir.x = -0.707107;
-	c.dir.y = -0.707107;
-	c.plane.x = 0.466690;
-	c.plane.y = -0.466690;
-	c.time = 0;
-	c.oldtime = 0;
-	init(&s);
-	trace(&s, &c, &p, world);
-	while ((mod = move(&c, world)))
+	while (p->hit == 0)
 	{
-		if (mod == 2)
-			trace(&s, &c, &p, world);
+		if (p->side.x < p->side.y)
+		{
+			p->side.x += p->delta.x;
+			p->map.x += p->step.x;
+			p->orientation = 0;
+		}
+		else
+		{
+			p->side.y += p->delta.y;
+			p->map.y += p->step.y;
+			p->orientation = 1;
+		}
+		if (world[p->map.x][p->map.y] > 0)
+			p->hit = 1;
 	}
-	close(&s);
 }

@@ -6,13 +6,14 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/16 11:29:53 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/21 16:49:07 by npineau          ###   ########.fr       */
+/*   Updated: 2014/01/19 17:07:37 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "wolf3d.h"
+#include "SDL.h"
+#include "wolf.h"
 
-void	color(t_env *env, t_player *play)
+void	color(t_player *play, t_screen *screen)
 {
 	if (play->raydir.y > 0 && play->orientation == 1)
 		SDL_SetRenderDrawColor(screen->r, 175, 175, 0, 255);
