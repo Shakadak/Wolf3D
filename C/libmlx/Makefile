@@ -6,7 +6,7 @@
 #    By: npineau <npineau@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2013/11/20 12:15:41 by npineau           #+#    #+#              #
-#    Updated: 2015/01/22 11:14:40 by npineau          ###   ########.fr        #
+#    Updated: 2015/01/22 12:57:42 by npineau          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,11 @@ DIRINI		:=	$(DIRSRC)/ini
 DIRMSC		:=	$(DIRSRC)/msc
 DIRPIX		:=	$(DIRSRC)/pix
 DIRINC		:=	inc
+DIRFT		:=	../libft
 
 ### FILES ###
+
+LIBFT		:=	$(DIRFT)/libft.a
 
 ### FILES: SOURCES ###
 
@@ -44,19 +47,22 @@ AR_EXEC		=	$(AR) $(AR_FLAG) $@ $^
 
 CC			:=	clang
 C_FLAG		:=	-Wall -Wextra -Werror
+I_FLAG		:=	-I $(DIRINC) -I $(DIRFT)/$(DIRINC)
 O_FLAG		:=	-O3
-C_OPT		=	-o $@ -c $< -I $(DIRINC)
+C_OPT		=	-o $@ -c $< $(I_FLAG)
 COMPIL		=	$(CC) $(C_FLAG) $(O_FLAG) $(C_OPT)
 
 ### RULES ###
 
-all: $(NAME)
+all: $(LIBFT) $(NAME)
 
 ### RULES: ARCHIVE ###
 
 $(NAME): $(POBJ)
 	$(AR_EXEC)
 
+$(LIBFT):
+	$(MAKE) -C $(DIRFT)
 ### RULES: MISC ###
 
 $(POBJ): |$(DIROBJ)
