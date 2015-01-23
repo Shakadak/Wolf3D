@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:37:48 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/23 14:03:48 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/23 15:49:26 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,13 @@ int					check(int const col, int const row, t_map const map);
 t_ray				dda(t_ray ray, t_map const map);
 t_ray				new_ray(t_player const player, int x);
 double				distance(t_ray const ray, t_player const player);
+
+
+t_color				get_wall_color(t_ray const ray);
+void				draw_slice(t_img const img,
+		t_ray const ray,
+		int const x,
+		int const distance);
 
 
 t_map				get_map(char const *file);
