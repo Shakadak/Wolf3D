@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:37:48 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/23 12:51:48 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/23 13:12:31 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <X11/keysym.h>
 # include <mlx.h>
 # include "libft.h"
-# include "libmlx.h"
+# include "libumlx.h"
 
 # define W_WIDTH 1366
 # define W_HEIGHT 768

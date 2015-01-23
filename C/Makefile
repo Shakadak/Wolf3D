@@ -6,7 +6,7 @@
 #    By: npineau <npineau@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/23 12:57:00 by npineau           #+#    #+#              #
-#    Updated: 2015/01/23 13:00:00 by npineau          ###   ########.fr        #
+#    Updated: 2015/01/23 13:09:08 by npineau          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ DIRSRC	:=	src
 DIROBJ	:=	obj
 DIRINC	:=	inc
 DIRFT	:=	libft
-DIRMLX	:=	libmlx
+DIRMLX	:=	libumlx
 DIRMAIN	:=	$(DIRSRC)/main
 DIRINI	:=	$(DIRSRC)/init
 DIRRAY	:=	$(DIRSRC)/ray
@@ -47,7 +47,7 @@ C_INC	:=	-I $(DIRINC) \
 			-I /usr/x11/include
 
 L_FLAG	:=	-L $(DIRFT) -lft \
-			-L $(DIRMLX) -lmlx \
+			-L $(DIRMLX) -lumlx \
 			-L /usr/X11/lib -lmlx -lXext -lX11
 
 COMPIL	= $(CC) -o $@ -c $< $(C_INC) $(C_FLAG) $(O_FLAG)
