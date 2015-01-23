@@ -1,6 +1,6 @@
 [submodule "C/libft"]
 	path = C/libft
 	url = https://github.com/Shakadak/libft.git
-[submodule "C/libmlx"]
-	path = C/libmlx
-	url = https://github.com/Shakadak/libmlx
+[submodule "C/libumlx"]
+	path = C/libumlx
+	url = https://github.com/Shakadak/libumlx.git
