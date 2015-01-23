@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:37:48 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/23 17:21:03 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/23 18:33:09 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,6 @@
 # define W_TITLE "Wolf3D"
 # define GRAIN 64
 # define PLAYER_ORIGIN 2
-
-typedef struct		s_ituple
-{
-	int				fst;
-	int				snd;
-	int				thd;
-}					t_ituple;
 
 typedef struct		s_dir
 {
@@ -83,7 +76,7 @@ t_color				get_wall_color(t_ray const ray);
 void				draw_slice(t_img const img,
 		t_ray const ray,
 		int const x,
-		int const distance);
+		double const distance);
 
 
 t_map				get_map(char const *file);

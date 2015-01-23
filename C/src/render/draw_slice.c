@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 15:09:32 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/23 17:03:43 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/23 18:33:31 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	draw_slice(t_img const img,
 		t_ray const ray,
 		int const x,
-		int const distance)
+		double const distance)
 {
 	int		height;
 	t_color	wall;

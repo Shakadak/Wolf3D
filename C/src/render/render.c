@@ -6,16 +6,17 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 13:48:00 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/23 16:42:12 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/23 18:36:08 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+#include <stdio.h>
 
 int	render(t_env *env)
 {
 	int		x;
-	int		dist;
+	double		dist;
 	t_ray	ray;
 
 	clear_image(env->img);
@@ -24,7 +25,6 @@ int	render(t_env *env)
 	{
 		ray = dda(new_ray(env->player, x), env->map);
 		dist = get_distance(ray, env->player);
-		ft_putendl_fd(ft_itoa(dist), 2);
 		draw_slice(env->img, ray, x, dist);
 		++x;
 	}

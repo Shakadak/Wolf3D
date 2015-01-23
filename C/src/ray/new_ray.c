@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_ray.c                                          :+:      :+:    :+:   */
+/*   ray_ray.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 12:02:16 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/23 16:57:11 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/23 17:51:07 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@ static void		step_side(t_ray *ray, t_player const p)
 t_ray			new_ray(t_player const player, int x)
 {
 	double	camera;
-	t_ray	new;
+	t_ray	ray;
 
 	camera = 2 * (double)x / W_WIDTH - 1;
-	new.dir.x = player.dir.x + player.cam.x * camera;
-	new.dir.y = player.dir.y + player.cam.y * camera;
-	new.map.x = (int)player.pos.x;
-	new.map.y = (int)player.pos.y;
-	new.delta.x = sqrt(1 + (new.dir.y * new.dir.y) / (new.dir.x * new.dir.x));
-	new.delta.y = sqrt(1 + (new.dir.x * new.dir.x) / (new.dir.y * new.dir.y));
-	step_side(&new, player);
-	return (new);
+	ray.dir.x = player.dir.x + player.cam.x * camera;
+	ray.dir.y = player.dir.y + player.cam.y * camera;
+	ray.map.x = (int)player.pos.x;
+	ray.map.y = (int)player.pos.y;
+	ray.delta.x = sqrt(1 + (ray.dir.y * ray.dir.y) / (ray.dir.x * ray.dir.x));
+	ray.delta.y = sqrt(1 + (ray.dir.x * ray.dir.x) / (ray.dir.y * ray.dir.y));
+	step_side(&ray, player);
+	return (ray);
 }
