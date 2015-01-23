@@ -1,7 +1,7 @@
-SRC	:=	main.c \
-		render.c
+MAIN	:=	main.c \
+			render.c
 
-OBJ := $(OBJ) $(SRC:.c=.o)
+OBJ := $(OBJ) $(MAIN:.c=.o)
 
-$(DIROBJ)/%.o: $(DIRSRC)/%.c $(HEAD)
+$(DIROBJ)/%.o: $(DIRMAIN)/%.c $(HEAD)
 	$(COMPIL)

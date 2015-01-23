@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: npineau <npineau@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2015/01/23 12:57:00 by npineau           #+#    #+#              #
+#    Updated: 2015/01/23 13:00:00 by npineau          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME	:=	wolf3d
 
 ### DIRECTORIES ###
@@ -5,27 +17,37 @@ NAME	:=	wolf3d
 DIRSRC	:=	src
 DIROBJ	:=	obj
 DIRINC	:=	inc
-DIRLIB	:=	libft
+DIRFT	:=	libft
+DIRMLX	:=	libmlx
+DIRMAIN	:=	$(DIRSRC)/main
+DIRINI	:=	$(DIRSRC)/init
+DIRRAY	:=	$(DIRSRC)/ray
 
 ### FILES ###
 
 HEAD := $(DIRINC)/$(NAME).h
 
-OBJ	:=
-
-include $(DIRSRC)/sources.mk
+include $(DIRMAIN)/sources.mk
+include $(DIRINI)/sources.mk
+include $(DIRRAY)/sources.mk
 
 POBJ	:=	$(addprefix $(DIROBJ)/, $(OBJ))
+
+PFT		:= $(DIRFT)/libft.a
+PMLX	:= $(DIRMLX)/libmlx.a
 
 ### COMPILATION VARIABLES ###
 
 C_FLAG	:=	-Wall -Wextra -Werror
 O_FLAG	:=	-O3
 
-C_INC	:=	-I $(DIRINC) -I $(DIRLIB)/$(DIRINC)ludes \
+C_INC	:=	-I $(DIRINC) \
+			-I $(DIRFT)/$(DIRINC) \
+			-I $(DIRMLX)/$(DIRINC) \
 			-I /usr/x11/include
 
-L_FLAG	:=	-L $(DIRLIB) -lft \
+L_FLAG	:=	-L $(DIRFT) -lft \
+			-L $(DIRMLX) -lmlx \
 			-L /usr/X11/lib -lmlx -lXext -lX11
 
 COMPIL	= $(CC) -o $@ -c $< $(C_INC) $(C_FLAG) $(O_FLAG)
@@ -36,7 +58,7 @@ LINK	= $(CC) -o $@ $^ $(L_FLAG)
 
 .PHONY: all clean fclean re
 
-all: $(PLIB) $(NAME)
+all: $(PFT) $(PMLX) $(NAME)
 
 $(POBJ): |$(DIROBJ)
 
@@ -46,10 +68,13 @@ $(DIROBJ):
 $(NAME): $(POBJ)
 	$(LINK)
 
-### LIBFT ###
+### LIBS ###
 
-$(PLIB):
-	make -C $(DIRLIB)
+$(PFT):
+	make -C $(DIRFT)
+
+$(PMLX):
+	make -C $(DIRMLX)
 
 ### MISC ###
 

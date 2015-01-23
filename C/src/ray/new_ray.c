@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 12:02:16 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/23 12:17:04 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/23 12:53:00 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,5 @@ t_ray			new_ray(t_player const player, int x)
 	new.delta.x = sqrt(1 + (raydir.y * raydir.y) / (raydir.x * raydir.x));
 	new.delta.y = sqrt(1 + (raydir.x * raydir.x) / (raydir.y * raydir.y));
 	step_side(&new, raydir, player);
+	return (new);
 }

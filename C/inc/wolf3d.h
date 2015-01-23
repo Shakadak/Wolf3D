@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:37:48 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/23 12:22:29 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/23 12:51:48 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,14 @@ typedef struct		s_map
 typedef struct		s_player
 {
 	t_dir			pos;
-	t_dir			dir
+	t_dir			dir;
 	t_dir			cam;
 }					t_player;
 
 typedef struct		s_ray
 {
 	t_dir			delta;
+	t_dir			side;
 	t_pos			map;
 	t_pos			step;
 	int				where;

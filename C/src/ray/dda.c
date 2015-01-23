@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 11:31:48 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/23 11:45:20 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/23 12:52:18 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_ray	dda(t_ray ray, t_map const map)
 		ray.map.y += ray.step.y;
 		ray.where = 1;
 	}
-	if check(ray.map.x, ray.map.y, map)
+	if (check(ray.map.x, ray.map.y, map))
 	{
 		return (ray);
 	}

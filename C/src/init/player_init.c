@@ -6,15 +6,17 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/20 14:30:23 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/23 11:14:19 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/23 12:50:36 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-t_pos		get_coordinate(t_map const map)
+t_dir		get_coordinate(t_map const map)
 {
-	t_pos	new;
+	t_dir	new;
+	int		i;
+	int		j;
 
 	j = 0;
 	while (j < map.height)
@@ -41,8 +43,6 @@ t_pos		get_coordinate(t_map const map)
 t_player	get_player(t_map const map)
 {
 	t_player	new;
-	int			i;
-	int			j;
 
 	new.dir.x = -1;
 	new.dir.y = 0;
