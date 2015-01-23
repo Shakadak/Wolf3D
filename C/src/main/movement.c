@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 17:55:41 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/23 17:55:43 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/23 18:59:14 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ static int	rot_right(t_player *c)
 
 int			move(int key_code, t_env *env)
 {
-	(key_code == XK_Left ? rot_right(&env->player) : (0));
-	(key_code == XK_Right ? rot_left(&env->player) : (0));
+	(key_code == XK_Left ? rot_left(&env->player) : (0));
+	(key_code == XK_Right ? rot_right(&env->player) : (0));
 	(key_code == XK_Down ? backward(&env->player, env->map.map) :  (0));
 	(key_code == XK_Up ? forward(&env->player, env->map.map) : (0));
 	return (0);
