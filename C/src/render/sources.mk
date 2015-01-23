@@ -1,4 +1,6 @@
-RDR	:=	render.c
+RDR	:=	render.c \
+		draw_slice.c \
+		wall_color.c
 
 OBJ := $(OBJ) $(RDR:.c=.o)
 
