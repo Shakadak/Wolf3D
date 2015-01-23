@@ -1,5 +1,4 @@
-MAIN	:=	main.c \
-			render.c
+MAIN	:=	main.c
 
 OBJ := $(OBJ) $(MAIN:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:37:48 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/23 13:25:49 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/23 14:03:48 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,9 @@ typedef struct		s_env
 }					t_env;
 
 int					check(int const col, int const row, t_map const map);
+t_ray				dda(t_ray ray, t_map const map);
 t_ray				new_ray(t_player const player, int x);
+double				distance(t_ray const ray, t_player const player);
 
 
 t_map				get_map(char const *file);
