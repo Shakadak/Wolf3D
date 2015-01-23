@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/15 15:57:48 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/21 11:22:18 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/23 11:21:15 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int main(int argc, char **argv)
 	}
 	env.map = get_map(argv[1]);
 	env.player = get_player(env.map);
-	env.mlx = init();
-	env.win = new_window(env.mlx);
-	env.img = new_image(env.mlx);
+	env.mlx = new_mlx();
+	env.win = new_window(env.mlx, W_WIDTH, W_HEIGHT, W_TITLE);
+	env.img = new_image(env.mlx, W_WIDTH, W_HEIGHT);
 	hook_init(env);
 	mlx_loop(env.mlx);
 	return (0);
