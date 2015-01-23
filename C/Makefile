@@ -6,7 +6,7 @@
 #    By: npineau <npineau@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/23 12:57:00 by npineau           #+#    #+#              #
-#    Updated: 2015/01/23 13:09:08 by npineau          ###   ########.fr        #
+#    Updated: 2015/01/23 13:15:11 by npineau          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ include $(DIRRAY)/sources.mk
 POBJ	:=	$(addprefix $(DIROBJ)/, $(OBJ))
 
 PFT		:= $(DIRFT)/libft.a
-PMLX	:= $(DIRMLX)/libmlx.a
+PMLX	:= $(DIRMLX)/libumlx.a
 
 ### COMPILATION VARIABLES ###
 
