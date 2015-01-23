@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:37:48 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/23 13:12:31 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/23 13:25:49 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct		s_player
 
 typedef struct		s_ray
 {
+	t_dir			dir;
 	t_dir			delta;
 	t_dir			side;
 	t_pos			map;

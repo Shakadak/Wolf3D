@@ -1,5 +1,6 @@
 RAY	:=	dda.c \
 		check.c \
+		distance.c \
 		new_ray.c
 
 OBJ := $(OBJ) $(RAY:.c=.o)
