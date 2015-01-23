@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:47:35 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/20 15:03:29 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/23 17:23:04 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include "wolf3d.h"
-#include <stdio.h>/////////////////////////////
 
 static t_map	init_map(char const *const line)
 {
@@ -25,11 +24,11 @@ static t_map	init_map(char const *const line)
 	new.width = ft_atoi(dim[0]);
 	new.height = ft_atoi(dim[1]);
 	ft_freesplit((void **)dim);
-	new.map = (char **)malloc((new.height + 1) * sizeof(char *));
+	new.map = (int **)malloc((new.height + 1) * sizeof(int *));
 	return (new);
 }
 
-static void		fill_line(char *dest, char const *const src, int const width)
+static void		fill_line(int *dest, char const *const src, int const width)
 {
 	char	**tab;
 	int		i;
@@ -60,7 +59,7 @@ t_map			get_map(char const *const file)
 	i = 0;
 	while (get_next_line(fd, &line) > 0 && i < map.height)
 	{
-		map.map[i] = ft_strnew(map.width);
+		map.map[i] = (int *)ft_strnew(map.width * sizeof(**map.map));
 		fill_line(map.map[i], line, map.width);
 		free(line);
 		++i;

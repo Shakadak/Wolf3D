@@ -1,4 +1,5 @@
-MAIN	:=	main.c
+MAIN	:=	main.c \
+		movement.c
 
 OBJ := $(OBJ) $(MAIN:.c=.o)
 

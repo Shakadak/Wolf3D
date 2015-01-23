@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:37:48 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/23 15:49:26 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/23 17:21:03 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct		s_map
 {
 	int				width;
 	int				height;
-	char			**map;
+	int				**map;
 }					t_map;
 
 typedef struct		s_player
@@ -75,8 +75,9 @@ typedef struct		s_env
 int					check(int const col, int const row, t_map const map);
 t_ray				dda(t_ray ray, t_map const map);
 t_ray				new_ray(t_player const player, int x);
-double				distance(t_ray const ray, t_player const player);
+double				get_distance(t_ray const ray, t_player const player);
 
+int					move(int key_code, t_env *env);
 
 t_color				get_wall_color(t_ray const ray);
 void				draw_slice(t_img const img,

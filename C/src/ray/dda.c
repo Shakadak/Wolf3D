@@ -6,11 +6,12 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 11:31:48 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/23 12:52:18 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/23 17:00:27 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+#include <stdio.h>////
 
 t_ray	dda(t_ray ray, t_map const map)
 {
@@ -28,6 +29,7 @@ t_ray	dda(t_ray ray, t_map const map)
 	}
 	if (check(ray.map.x, ray.map.y, map))
 	{
+	printf("dda: x%d, y%d\n", ray.map.x, ray.map.y);
 		return (ray);
 	}
 	else
