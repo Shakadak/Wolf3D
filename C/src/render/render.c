@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 13:48:00 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/23 14:04:38 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/23 14:41:33 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	render(t_env *env)
 	while (x < W_WIDTH)
 	{
 		height = distance(dda(new_ray(env->player, x), env->map), env->player);
+		++x;
 	}
 	apply_image(env->win, env->img, new_pos(0, 0, 0));
 	return (0);
