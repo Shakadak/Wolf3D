@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:37:48 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/21 15:43:26 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/23 11:06:10 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <X11/keysym.h>
 # include <mlx.h>
 # include "libft.h"
+# include "libmlx.h"
 
 # define W_WIDTH 1366
 # define W_HEIGHT 768
@@ -31,24 +32,12 @@ typedef struct		s_ituple
 	int				thd;
 }					t_ituple;
 
-typedef struct		s_point
+typedef struct		s_dir
 {
-	int				x;
-	int				y;
-	int				z;
-}					t_point;
-
-typedef union		u_color
-{
-	unsigned int	id;
-	unsigned char	rgb[4];
-}					t_color;
-
-typedef struct		s_pixel
-{
-	t_point			coordinate;
-	t_color			color;
-}					t_pixel;
+	double			x;
+	double			y;
+	double			z;
+}					t_dir;
 
 typedef struct		s_map
 {
@@ -59,24 +48,15 @@ typedef struct		s_map
 
 typedef struct		s_player
 {
-	t_point			coordinate;
-	double			direction;
-	double			fov;
+	t_pos			pos;
+	t_dir			dir
+	t_dir			cam;
 }					t_player;
-
-typedef struct		s_img
-{
-	void			*img;
-	char			*data;
-	int				bits;
-	int				lsize;
-	int				endian;
-}					t_img;
 
 typedef struct		s_env
 {
 	void			*mlx;
-	void			*win;
+	t_win			win;
 	t_img			img;
 	t_player		player;
 	t_map			map;

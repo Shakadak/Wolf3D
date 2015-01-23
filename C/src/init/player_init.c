@@ -6,20 +6,16 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/20 14:30:23 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/22 12:05:59 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/23 11:14:19 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-t_player	get_player(t_map const map)
+t_pos		get_coordinate(t_map const map)
 {
-	t_player	new;
-	int			i;
-	int			j;
+	t_pos	new;
 
-	new.direction = M_PI_2;
-	new.fov = M_PI / 2;
 	j = 0;
 	while (j < map.height)
 	{
@@ -28,9 +24,9 @@ t_player	get_player(t_map const map)
 		{
 			if (map.map[j][i] == PLAYER_ORIGIN)
 			{
-				new.coordinate.y = j * GRAIN + GRAIN / 2;
-				new.coordinate.x = i * GRAIN + GRAIN / 2;
-				new.coordinate.z = GRAIN / 2;
+				new.y = j * GRAIN + GRAIN / 2;
+				new.x = i * GRAIN + GRAIN / 2;
+				new.z = GRAIN / 2;
 				return (new);
 			}
 			++i;
@@ -38,5 +34,20 @@ t_player	get_player(t_map const map)
 		++j;
 	}
 	ft_fatal("Player original coordinate not found.", 0);
+	return (new);
+
+}
+
+t_player	get_player(t_map const map)
+{
+	t_player	new;
+	int			i;
+	int			j;
+
+	new.dir.x = -1;
+	new.dir.y = 0;
+	new.cam.x = 0;
+	new.cam.y = 0.66;
+	new.pos = get_coordinate(map);
 	return (new);
 }
