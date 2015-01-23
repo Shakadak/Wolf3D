@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:37:48 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/23 18:33:09 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/23 19:08:42 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ void				draw_slice(t_img const img,
 		t_ray const ray,
 		int const x,
 		double const distance);
-
 
 t_map				get_map(char const *file);
 t_player			get_player(t_map const map);

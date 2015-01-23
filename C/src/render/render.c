@@ -6,17 +6,16 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 13:48:00 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/23 18:36:08 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/23 19:11:06 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-#include <stdio.h>
 
 int	render(t_env *env)
 {
 	int		x;
-	double		dist;
+	double	dist;
 	t_ray	ray;
 
 	clear_image(env->img);
