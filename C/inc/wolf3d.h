@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:37:48 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/26 16:42:34 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/26 17:14:42 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@
 # define CLOCK 1
 # define COUNTER 1 << 2
 
-# define SPEED 0.25
-# define ROT M_PI_4 /4
+# define SPEED 1.0
+# define ROT 1.0
 
 typedef struct		s_dir
 {
@@ -84,8 +84,8 @@ t_ray				dda(t_ray ray, t_map const map);
 t_ray				new_ray(t_player const player, int x);
 double				get_distance(t_ray const ray, t_player const player);
 
-int					move(t_env *env);
-int					rotate(t_env *env);
+int					move(t_env *env, double frame);
+int					rotate(t_env *env, double frame);
 int					is_direction(int key);
 void				direction_press(int key, int *mov);
 void				direction_release(int key, int *mov);

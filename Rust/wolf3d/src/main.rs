@@ -15,9 +15,11 @@ pub mod raycaster;
 
 fn main()
 {
+    let width = 1366f64;
+    let height = 768f64;
     sdl2::init(sdl2::INIT_VIDEO);
     let window = match Window::new("Wolf3D", WindowPos::PosCentered,
-                                   WindowPos::PosCentered, 1366, 768, OPENGL)
+                                   WindowPos::PosCentered, width as isize, height as isize, OPENGL)
     {
         Ok(window) => window,
         Err(err) => panic!("failed to create window: {}", err)
@@ -28,9 +30,7 @@ fn main()
         Err(err) => panic!("failed to create renderer: {}", err)
     };
 
-    let mut player = player::Player{coordinate: player::Point{x: 3 * 64 + 32, y: 3 * 64 + 32}, direction: 90f64.to_radians(), fov: 60f64.to_radians()};
-    let width = 1366f64;
-    let height = 768f64;
+    let mut player = player::Player{coordinate: player::Point{x: 3 * 64 + 32, y: 3 * 64 + 32}, direction: 90f64.to_radians(), fov: 70f64.to_radians()};
     let plane_center = (width / 2f64, height / 2f64);
     let d  = (width / 2f64) / (player.fov / 2f64).tan();
     let map = vec![
@@ -53,6 +53,7 @@ fn main()
                     KeyCode::Escape => break,
                     KeyCode::Left   => player.direction = (PI_2 - FRAC_PI_4 + player.direction) % PI_2,
                     KeyCode::Right  => player.direction = (PI_2 + FRAC_PI_4 + player.direction) % PI_2,
+                    KeyCode::Up     => player.coordinate.x += 5,
                     _               => {}
                 }
             }
