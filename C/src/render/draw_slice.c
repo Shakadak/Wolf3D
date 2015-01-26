@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 15:09:32 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/23 18:33:31 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/26 16:39:59 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,9 @@ void	draw_slice(t_img const img,
 	wall = get_wall_color(ray);
 	start = new_pixel(new_pos(x, (-height + W_HEIGHT) / 2, 0), wall);
 	end = new_pixel(new_pos(x, (height + W_HEIGHT) / 2, 0), wall);
-	draw_line(img, start, end);
+	while (start.pos.y <= end.pos.y)
+	{
+		put_pixel_to_image(img, start);
+		++start.pos.y;
+	}
 }

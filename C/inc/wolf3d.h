@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:37:48 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/26 14:17:05 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/26 16:42:34 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include "libft.h"
 # include "libumlx.h"
 
-# define W_WIDTH 1366
+# define W_WIDTH 2400
 # define W_HEIGHT 768
 # define W_TITLE "Wolf3D"
 # define GRAIN 64

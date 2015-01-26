@@ -6,10 +6,11 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 13:48:00 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/26 14:16:32 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/26 16:41:04 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <sys/time.h>
 #include "wolf3d.h"
 
 static void	draw_env(t_img const img)
@@ -29,12 +30,27 @@ static void	draw_env(t_img const img)
 	draw_rectangle(img, start, end);
 }
 
+double		get_frame_time()
+{
+	static struct timeval	old;
+	struct timeval			current;
+	double					frame;
+
+	gettimeofday(&current, NULL);
+	frame = ((current.tv_sec - old.tv_sec) * 1000000
+			+ (current.tv_usec - old.tv_usec));
+	old = current;
+	return (frame / 1000000);
+}
+
 int			render(t_env *env)
 {
 	int		x;
 	double	dist;
 	t_ray	ray;
+	double	frame;
 
+	frame = get_frame_time();
 	clear_image(env->img);
 	draw_env(env->img);
 	move(env);

@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/15 18:45:24 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/26 14:20:52 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/26 16:38:52 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		key_press(int key, t_env *env)
 		direction_press(key, &env->player.mov);
 	else
 		rotation_press(key, &env->player.rot);
-	return (render(env));
+	return (0);
 }
 
 int		key_release(int key, t_env *env)
@@ -33,7 +33,7 @@ int		key_release(int key, t_env *env)
 		direction_release(key, &env->player.mov);
 	else
 		rotation_release(key, &env->player.rot);
-	return (render(env));
+	return (0);
 }
 
 void	hook_init(t_env const env)
