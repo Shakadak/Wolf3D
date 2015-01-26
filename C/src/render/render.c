@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 13:48:00 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/26 11:52:14 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/26 14:16:32 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int			render(t_env *env)
 
 	clear_image(env->img);
 	draw_env(env->img);
+	move(env);
+	rotate(env);
 	x = 0;
 	while (x < W_WIDTH)
 	{

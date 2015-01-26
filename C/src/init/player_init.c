@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/20 14:30:23 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/23 18:14:08 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/26 13:53:08 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ t_player	get_player(t_map const map)
 	new.dir.y = 0;
 	new.cam.x = 0;
 	new.cam.y = 1;
+	new.mov = 0;
+	new.rot = 0;
 	new.pos = get_coordinate(map);
 	return (new);
 }

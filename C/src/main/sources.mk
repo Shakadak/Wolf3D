@@ -1,5 +1,8 @@
 MAIN	:=	main.c \
-		movement.c
+		direction.c \
+		movement.c \
+		options.c \
+		rotation.c
 
 OBJ := $(OBJ) $(MAIN:.c=.o)
 
