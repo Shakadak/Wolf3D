@@ -16,7 +16,7 @@ void		rotation_release(int key, int *rot)
 		*rot = rem_option(*rot, CLOCK);
 }
 
-static int	rot_left(t_player *c, double rot)
+static void	rot_left(t_player *c, double rot)
 {
 	double	odirx;
 	double	ocamx;
@@ -27,10 +27,9 @@ static int	rot_left(t_player *c, double rot)
 	c->dir.y = odirx * sin(-rot) + c->dir.y * cos(-rot);
 	c->cam.x = c->cam.x * cos(-rot) - c->cam.y * sin(-rot);
 	c->cam.y = ocamx * sin(-rot) + c->cam.y * cos(-rot);
-	return (2);
 }
 
-static int	rot_right(t_player *c, double rot)
+static void	rot_right(t_player *c, double rot)
 {
 	double	odirx;
 	double	ocamx;
@@ -41,14 +40,12 @@ static int	rot_right(t_player *c, double rot)
 	c->dir.y = odirx * sin(rot) + c->dir.y * cos(rot);
 	c->cam.x = c->cam.x * cos(rot) - c->cam.y * sin(rot);
 	c->cam.y = ocamx * sin(rot) + c->cam.y * cos(rot);
-	return (2);
 }
 
-int			rotate(t_env *env, double rot)
+void		rotate(t_env *env, double rot)
 {
 	if ((env->player.rot & (CLOCK | COUNTER)) == CLOCK)
 		rot_right(&env->player, rot);
 	if ((env->player.rot & (CLOCK | COUNTER)) == COUNTER)
 		rot_left(&env->player, rot);
-	return (0);
 }

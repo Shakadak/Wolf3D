@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:37:48 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/27 14:15:05 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/27 17:45:56 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ t_ray				new_ray(t_player const player, int x);
 double				get_distance(t_ray const ray, t_player const player);
 double				get_frame_time(void);
 
-int					move(t_env *env, double frame);
-int					rotate(t_env *env, double frame);
+void				move(t_env *env, double frame);
+void				rotate(t_env *env, double frame);
 int					is_direction(int key);
 void				direction_press(int key, int *mov);
 void				direction_release(int key, int *mov);
