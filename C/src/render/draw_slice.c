@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 15:09:32 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/26 16:39:59 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/27 14:00:12 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ void	draw_slice(t_img const img,
 	t_pix	start;
 	t_pix	end;
 
-	height = fabs(W_HEIGHT / distance);
+	height = W_HEIGHT;
+	if (distance > 1.0)
+		height = fabs(W_HEIGHT / distance);
 	wall = get_wall_color(ray);
 	start = new_pixel(new_pos(x, (-height + W_HEIGHT) / 2, 0), wall);
 	end = new_pixel(new_pos(x, (height + W_HEIGHT) / 2, 0), wall);

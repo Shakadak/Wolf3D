@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:37:48 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/26 17:14:42 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/27 14:15:05 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include "libft.h"
 # include "libumlx.h"
 
-# define W_WIDTH 2400
+# define W_WIDTH 1366
 # define W_HEIGHT 768
 # define W_TITLE "Wolf3D"
 # define GRAIN 64
@@ -34,8 +34,8 @@
 # define CLOCK 1
 # define COUNTER 1 << 2
 
-# define SPEED 1.0
-# define ROT 1.0
+# define SPEED 2.0
+# define ROT 2.0
 
 typedef struct		s_dir
 {
@@ -83,6 +83,7 @@ int					check(int const col, int const row, t_map const map);
 t_ray				dda(t_ray ray, t_map const map);
 t_ray				new_ray(t_player const player, int x);
 double				get_distance(t_ray const ray, t_player const player);
+double				get_frame_time(void);
 
 int					move(t_env *env, double frame);
 int					rotate(t_env *env, double frame);
