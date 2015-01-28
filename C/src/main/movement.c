@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 17:55:41 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/28 15:03:48 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/28 16:47:52 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,33 @@
 
 static void	rightward(t_player *c, t_map const map, double speed)
 {
-	if (!check(c->pos.x + -c->dir.y * speed, c->pos.y, map))
+	if (!collide(c->pos.x + -c->dir.y * speed, c->pos.y, map))
 		c->pos.x += -c->dir.y * speed;
-	if (!check(c->pos.x, c->pos.y + c->dir.x * speed, map))
+	if (!collide(c->pos.x, c->pos.y + c->dir.x * speed, map))
 		c->pos.y += c->dir.x * speed;
 }
 
 static void	leftward(t_player *c, t_map const map, double speed)
 {
-	if (!check(c->pos.x + c->dir.y * speed, c->pos.y, map))
+	if (!collide(c->pos.x + c->dir.y * speed, c->pos.y, map))
 		c->pos.x += c->dir.y * speed;
-	if (!check(c->pos.x, c->pos.y + -c->dir.x * speed, map))
+	if (!collide(c->pos.x, c->pos.y + -c->dir.x * speed, map))
 		c->pos.y += -c->dir.x * speed;
 }
 
 static void	forward(t_player *c, t_map const map, double speed)
 {
-	if (!check(c->pos.x + c->dir.x * speed, c->pos.y, map))
+	if (!collide(c->pos.x + c->dir.x * speed, c->pos.y, map))
 		c->pos.x += c->dir.x * speed;
-	if (!check(c->pos.x, c->pos.y + c->dir.y * speed, map))
+	if (!collide(c->pos.x, c->pos.y + c->dir.y * speed, map))
 		c->pos.y += c->dir.y * speed;
 }
 
 static void	backward(t_player *c, t_map const map, double speed)
 {
-	if (!check(c->pos.x - c->dir.x * speed, c->pos.y, map))
+	if (!collide(c->pos.x - c->dir.x * speed, c->pos.y, map))
 		c->pos.x -= c->dir.x * speed;
-	if (!check(c->pos.x, c->pos.y - c->dir.y * speed, map))
+	if (!collide(c->pos.x, c->pos.y - c->dir.y * speed, map))
 		c->pos.y -= c->dir.y * speed;
 }
 

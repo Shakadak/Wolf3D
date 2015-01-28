@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:37:48 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/27 17:45:56 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/28 16:51:29 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct		s_player
 
 typedef struct		s_ray
 {
+	double			dist;
 	t_dir			dir;
 	t_dir			delta;
 	t_dir			side;
@@ -79,6 +80,7 @@ typedef struct		s_env
 	t_map			map;
 }					t_env;
 
+int					collide(double const x, double const y, t_map const map);
 int					check(int const col, int const row, t_map const map);
 t_ray				dda(t_ray ray, t_map const map);
 t_ray				new_ray(t_player const player, int x);
@@ -97,7 +99,7 @@ t_color				get_wall_color(t_ray const ray);
 void				draw_slice(t_img const img,
 		t_ray const ray,
 		int const x,
-		double const distance);
+		t_player const player);
 
 int					add_option(int const param, int const option);
 int					rem_option(int const param, int const option);

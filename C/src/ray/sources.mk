@@ -1,5 +1,4 @@
 RAY	:=	dda.c \
-		check.c \
 		distance.c \
 		new_ray.c
 
