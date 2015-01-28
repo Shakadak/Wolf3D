@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:37:48 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/28 16:51:29 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/28 17:02:27 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 
 # define SPEED 2.0
 # define ROT 2.0
+# define HITBOX 0.05
 
 typedef struct		s_dir
 {
