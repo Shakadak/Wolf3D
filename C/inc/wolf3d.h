@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:37:48 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/28 17:02:27 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/28 17:21:39 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 
 # define SPEED 2.0
 # define ROT 2.0
-# define HITBOX 0.05
+# define HITBOX 0.1 * W_HEIGHT / W_WIDTH
 
 typedef struct		s_dir
 {
@@ -91,6 +91,7 @@ double				get_frame_time(void);
 void				move(t_env *env, double frame);
 void				rotate(t_env *env, double frame);
 int					is_direction(int key);
+int					is_rotation(int key);
 void				direction_press(int key, int *mov);
 void				direction_release(int key, int *mov);
 void				rotation_press(int key, int *rot);

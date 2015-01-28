@@ -2,17 +2,17 @@
 
 void		rotation_press(int key, int *rot)
 {
-	if (key == XK_Left || key == XK_a)
+	if (key == XK_Left || key == XK_q)
 		*rot = add_option(*rot, COUNTER);
-	if (key == XK_Right || key == XK_d)
+	if (key == XK_Right || key == XK_e)
 		*rot = add_option(*rot, CLOCK);
 }
 
 void		rotation_release(int key, int *rot)
 {
-	if (key == XK_Left || key == XK_a)
+	if (key == XK_Left || key == XK_q)
 		*rot = rem_option(*rot, COUNTER);
-	if (key == XK_Right || key == XK_d)
+	if (key == XK_Right || key == XK_e)
 		*rot = rem_option(*rot, CLOCK);
 }
 

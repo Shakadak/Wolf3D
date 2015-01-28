@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/15 18:45:24 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/26 16:38:52 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/28 17:22:32 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		key_press(int key, t_env *env)
 		exit(0);
 	else if (is_direction(key))
 		direction_press(key, &env->player.mov);
-	else
+	else if (is_rotation(key))
 		rotation_press(key, &env->player.rot);
 	return (0);
 }
