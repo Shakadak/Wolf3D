@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 17:19:28 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/28 17:20:52 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/29 17:35:23 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,13 @@ int			is_direction(int key)
 	|| key == XK_a);
 }
 
-int			is_rotation(int key)
+int			is_vertical_rotation(int key)
 {
 	return (key == XK_Left || key == XK_q
 	|| key == XK_Right || key == XK_e);
+}
+
+int	is_horizontal_rotation(int key)
+{
+	return (key == XK_r || key == XK_f);
 }

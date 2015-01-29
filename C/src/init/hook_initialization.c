@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/15 18:45:24 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/28 17:22:32 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/29 17:31:40 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ int		key_press(int key, t_env *env)
 		exit(0);
 	else if (is_direction(key))
 		direction_press(key, &env->player.mov);
-	else if (is_rotation(key))
-		rotation_press(key, &env->player.rot);
+	else if (is_vertical_rotation(key))
+		v_rot_press(key, &env->player.rot);
+	else if (is_horizontal_rotation(key))
+		h_rot_press(key, &env->player.rot);
 	return (0);
 }
 
@@ -31,8 +33,10 @@ int		key_release(int key, t_env *env)
 		exit(0);
 	else if (is_direction(key))
 		direction_release(key, &env->player.mov);
-	else
-		rotation_release(key, &env->player.rot);
+	else if (is_vertical_rotation(key))
+		v_rot_release(key, &env->player.rot);
+	else if (is_horizontal_rotation(key))
+		h_rot_release(key, &env->player.rot);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 13:48:00 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/28 16:11:42 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/29 17:36:42 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ static void	draw_env(t_img const img, t_player const p)
 	t_pix	end;
 
 	start.pos = new_pos(0, 0, 0);
-	end.pos = new_pos(W_WIDTH, W_HEIGHT * p.pos.z / 2, 0);
+	end.pos = new_pos(W_WIDTH, W_HEIGHT * p.z / 2, 0);
 	start.color = new_color(176, 216, 230);
 	end.color = start.color;
 	draw_rectangle(img, start, end);
-	start.pos = new_pos(0, W_HEIGHT * p.pos.z / 2, 0);
+	start.pos = new_pos(0, W_HEIGHT * p.z / 2, 0);
 	end.pos = new_pos(W_WIDTH, W_HEIGHT, 0);
 	start.color = new_color(150, 75, 0);
 	end.color = start.color;
@@ -41,6 +41,12 @@ double		get_frame_time(void)
 			+ (current.tv_usec - old.tv_usec));
 	old = current;
 	return (frame / 1000000);
+}
+
+void		rotate(t_env *env, double const rot)
+{
+	h_rot(env, rot);
+	v_rot(env, rot);
 }
 
 int			render(t_env *env)

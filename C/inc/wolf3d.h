@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:37:48 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/28 17:21:39 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/29 17:34:35 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@
 # define LEFT 1 << 3
 # define RIGHT 1 << 4
 
-# define CLOCK 1
-# define COUNTER 1 << 2
+# define ROT_RIGHT 1
+# define ROT_LEFT 1 << 2
+# define ROT_UP 1 << 3
+# define ROT_DOWN 1 << 4
 
 # define SPEED 2.0
 # define ROT 2.0
@@ -54,6 +56,7 @@ typedef struct		s_map
 
 typedef struct		s_player
 {
+	double			z;
 	int				mov;
 	int				rot;
 	t_dir			pos;
@@ -89,13 +92,22 @@ double				get_distance(t_ray const ray, t_player const player);
 double				get_frame_time(void);
 
 void				move(t_env *env, double frame);
-void				rotate(t_env *env, double frame);
+
 int					is_direction(int key);
-int					is_rotation(int key);
 void				direction_press(int key, int *mov);
 void				direction_release(int key, int *mov);
-void				rotation_press(int key, int *rot);
-void				rotation_release(int key, int *rot);
+
+void				rotate(t_env *env, double frame);
+
+int					is_vertical_rotation(int key);
+void				v_rot_press(int key, int *rot);
+void				v_rot_release(int key, int *rot);
+void				v_rot(t_env *env, double rot);
+
+int					is_horizontal_rotation(int key);
+void				h_rot_press(int key, int *rot);
+void				h_rot_release(int key, int *rot);
+void				h_rot(t_env *env, double rot);
 
 t_color				get_wall_color(t_ray const ray);
 void				draw_slice(t_img const img,
