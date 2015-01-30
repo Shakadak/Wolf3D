@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:37:48 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/30 16:49:57 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/30 17:03:11 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,23 +95,19 @@ double				get_frame_time(void);
 
 void				move(t_env *env, double frame);
 
-int					is_horizontal_movement(int key);
 void				h_mov_press(int key, int *mov);
 void				h_mov_release(int key, int *mov);
 
-int					is_vertical_movement(int key);
 void				v_mov_press(int key, int *mov);
 void				v_mov_release(int key, int *mov);
 void				v_mov(t_env *env, double speed);
 
 void				rotate(t_env *env, double frame);
 
-int					is_vertical_rotation(int key);
 void				v_rot_press(int key, int *rot);
 void				v_rot_release(int key, int *rot);
 void				v_rot(t_env *env, double rot);
 
-int					is_horizontal_rotation(int key);
 void				h_rot_press(int key, int *rot);
 void				h_rot_release(int key, int *rot);
 void				h_rot(t_env *env, double rot);

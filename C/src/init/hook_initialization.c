@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/15 18:45:24 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/30 16:00:11 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/30 17:00:08 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,10 @@ int		key_press(int key, t_env *env)
 {
 	if (key == XK_Escape)
 		exit(0);
-	else if (is_vertical_movement(key))
-		v_mov_press(key, &env->player.mov);
-	else if (is_horizontal_movement(key))
-		h_mov_press(key, &env->player.mov);
-	else if (is_vertical_rotation(key))
-		v_rot_press(key, &env->player.rot);
-	else if (is_horizontal_rotation(key))
-		h_rot_press(key, &env->player.rot);
+	v_mov_press(key, &env->player.mov);
+	h_mov_press(key, &env->player.mov);
+	v_rot_press(key, &env->player.rot);
+	h_rot_press(key, &env->player.rot);
 	return (0);
 }
 
@@ -33,14 +29,10 @@ int		key_release(int key, t_env *env)
 {
 	if (key == XK_Escape)
 		exit(0);
-	else if (is_vertical_movement(key))
-		v_mov_release(key, &env->player.mov);
-	else if (is_horizontal_movement(key))
-		h_mov_release(key, &env->player.mov);
-	else if (is_vertical_rotation(key))
-		v_rot_release(key, &env->player.rot);
-	else if (is_horizontal_rotation(key))
-		h_rot_release(key, &env->player.rot);
+	v_mov_release(key, &env->player.mov);
+	h_mov_release(key, &env->player.mov);
+	v_rot_release(key, &env->player.rot);
+	h_rot_release(key, &env->player.rot);
 	return (0);
 }
 

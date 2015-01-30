@@ -3,7 +3,6 @@ MAIN	:=	main.c \
 		horizontal_movement.c \
 		vertical_movement.c \
 		options.c \
-		is_key.c \
 		key_press.c \
 		key_release.c \
 		horizontal_rotation.c \
