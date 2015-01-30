@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/29 17:21:28 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/30 16:18:53 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/30 17:43:07 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 static void	rot_up(t_player *c, double rot)
 {
-	c->z += rot;
-	if (c->z > 2)
-		c->z = 2;
+	c->cam.z += rot;
+	if (c->cam.z > 2)
+		c->cam.z = 2;
 }
 
 static void	rot_down(t_player *c, double rot)
 {
-	c->z -= rot;
-	if (c->z < 0)
-		c->z = 0;
+	c->cam.z -= rot;
+	if (c->cam.z < 0)
+		c->cam.z = 0;
 }
 
 void		h_rot(t_env *env, double rot)

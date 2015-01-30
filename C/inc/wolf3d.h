@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:37:48 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/30 17:03:11 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/30 17:34:44 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ typedef struct		s_map
 
 typedef struct		s_player
 {
-	double			z;
 	int				mov;
 	int				rot;
 	t_dir			pos;
