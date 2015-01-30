@@ -6,27 +6,11 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/29 17:21:28 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/29 17:39:38 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/30 16:18:53 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-
-void		h_rot_press(int key, int *rot)
-{
-	if (key == XK_r)
-		*rot = add_option(*rot, ROT_UP);
-	if (key == XK_f)
-		*rot = add_option(*rot, ROT_DOWN);
-}
-
-void		h_rot_release(int key, int *rot)
-{
-	if (key == XK_r)
-		*rot = rem_option(*rot, ROT_UP);
-	if (key == XK_f)
-		*rot = rem_option(*rot, ROT_DOWN);
-}
 
 static void	rot_up(t_player *c, double rot)
 {

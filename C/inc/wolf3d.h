@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:37:48 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/29 17:34:35 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/30 16:49:57 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,16 @@
 # define PLAYER_ORIGIN 2
 
 # define UP 1
-# define DOWN 1 << 2
-# define LEFT 1 << 3
-# define RIGHT 1 << 4
+# define DOWN 1 << 1
+# define LEFT 1 << 2
+# define RIGHT 1 << 3
+# define FORWARD 1 << 4
+# define BACKWARD 1 << 5
 
 # define ROT_RIGHT 1
-# define ROT_LEFT 1 << 2
-# define ROT_UP 1 << 3
-# define ROT_DOWN 1 << 4
+# define ROT_LEFT 1 << 1
+# define ROT_UP 1 << 2
+# define ROT_DOWN 1 << 3
 
 # define SPEED 2.0
 # define ROT 2.0
@@ -93,9 +95,14 @@ double				get_frame_time(void);
 
 void				move(t_env *env, double frame);
 
-int					is_direction(int key);
-void				direction_press(int key, int *mov);
-void				direction_release(int key, int *mov);
+int					is_horizontal_movement(int key);
+void				h_mov_press(int key, int *mov);
+void				h_mov_release(int key, int *mov);
+
+int					is_vertical_movement(int key);
+void				v_mov_press(int key, int *mov);
+void				v_mov_release(int key, int *mov);
+void				v_mov(t_env *env, double speed);
 
 void				rotate(t_env *env, double frame);
 

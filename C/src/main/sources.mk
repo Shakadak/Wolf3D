@@ -1,8 +1,11 @@
 MAIN	:=	main.c \
 		direction.c \
-		movement.c \
+		horizontal_movement.c \
+		vertical_movement.c \
 		options.c \
 		is_key.c \
+		key_press.c \
+		key_release.c \
 		horizontal_rotation.c \
 		vertical_rotation.c
 

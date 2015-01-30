@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 13:48:00 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/30 15:24:58 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/30 16:57:02 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ int			render(t_env *env)
 
 	frame = get_frame_time();
 	clear_image(env->img);
-	draw_env(env->img, env->player);
 	move(env, SPEED * frame);
 	rotate(env, ROT * frame);
+	draw_env(env->img, env->player);
 	x = 0;
 	while (x < W_WIDTH)
 	{
