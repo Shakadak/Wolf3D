@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 15:09:32 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/29 17:35:57 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/30 15:26:39 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,16 @@ void		draw_slice(t_img const img,
 		int const x,
 		t_player const p)
 {
-	int		height;
+	int		h;
 	t_color	wall;
 	t_pix	start;
 	t_pix	end;
 
-	height = fabs(W_HEIGHT / ray.dist);
+	h = fabs(W_HEIGHT / ray.dist);
 	wall = get_wall_color(ray);
-	start = new_pixel(new_pos(x, (max_up(-height + W_HEIGHT * p.z) / 2), 0),
+	start = new_pixel(new_pos(x, (max_up(-h * (2 - p.pos.z) + W_HEIGHT * p.z) / 2), 0),
 			wall);
-	end = new_pixel(new_pos(x, max_down((height + W_HEIGHT * p.z) / 2), 0),
+	end = new_pixel(new_pos(x, max_down((h * p.pos.z + W_HEIGHT * p.z) / 2), 0),
 			wall);
 	while (start.pos.y <= end.pos.y)
 	{
