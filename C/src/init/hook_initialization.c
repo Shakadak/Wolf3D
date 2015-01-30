@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/15 18:45:24 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/30 17:00:08 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/30 18:08:13 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	hook_init(t_env const env)
 {
 	mlx_do_key_autorepeatoff(env.mlx);
 	mlx_hook(env.win.win, KeyPress, KeyPressMask, key_press, (void *)&env);
-	mlx_hook(env.win.win, KeyRelease, KeyReleaseMask, key_release, (void *)&env);
+	mlx_hook(env.win.win,
+			KeyRelease, KeyReleaseMask, key_release, (void *)&env);
 	mlx_loop_hook(env.mlx, render, (void *)&env);
 }

@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/28 16:48:33 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/28 16:57:54 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/30 18:09:45 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	collide(double const x, double const y, t_map const map)
 	else if (check(x - HITBOX, y + HITBOX, map))
 		return (!0);
 	else
-		return(0);
+		return (0);
 }
 
 int	check(const int col, const int row, const t_map map)

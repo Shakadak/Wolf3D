@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 17:55:41 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/30 16:17:13 by npineau          ###   ########.fr       */
+/*   Updated: 2015/01/30 18:08:57 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void		move(t_env *env, double speed)
 {
 	if ((env->player.mov & (FORWARD | BACKWARD)) == FORWARD)
 		forward(&env->player, env->map, speed);
-	if((env->player.mov & (FORWARD | BACKWARD)) == BACKWARD)
+	if ((env->player.mov & (FORWARD | BACKWARD)) == BACKWARD)
 		backward(&env->player, env->map, speed);
 	if ((env->player.mov & (LEFT | RIGHT)) == LEFT)
 		leftward(&env->player, env->map, speed);
