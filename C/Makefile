@@ -6,7 +6,7 @@
 #    By: npineau <npineau@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/23 12:57:00 by npineau           #+#    #+#              #
-#    Updated: 2015/01/28 16:51:15 by npineau          ###   ########.fr        #
+#    Updated: 2015/02/03 12:40:37 by npineau          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,7 +88,7 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 
-run: $(NAME)
+run: all
 	./$(NAME) map/llapillo.map
 
 re: fclean all
