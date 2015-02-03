@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:47:35 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/30 14:36:46 by npineau          ###   ########.fr       */
+/*   Updated: 2015/02/03 13:52:39 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,14 @@ static t_map	init_map(char const *const line)
 	char	**dim;
 
 	dim = ft_strxsplit(line, ft_isspace);
+	if (dim == NULL)
+		ft_fatal("failed to allocate dimension", 1);
+	if (dim[0] == NULL || dim[1] == NULL || dim[2] != NULL)
+		ft_fatal("incorrect map format", 0);
 	new.width = ft_atoi(dim[0]);
 	new.height = ft_atoi(dim[1]);
+	if (new.width < 1 || new.height < 1)
+		ft_fatal("incorrect map size", 0);
 	ft_freesplit((void **)dim);
 	new.map = (int **)malloc((new.height + 1) * sizeof(int *));
 	return (new);
