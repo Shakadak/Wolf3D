@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:37:48 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/30 17:34:44 by npineau          ###   ########.fr       */
+/*   Updated: 2015/02/03 13:38:03 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define RIGHT 1 << 3
 # define FORWARD 1 << 4
 # define BACKWARD 1 << 5
+# define SPRINT 1 << 6
 
 # define ROT_RIGHT 1
 # define ROT_LEFT 1 << 1
