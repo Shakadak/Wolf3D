@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:47:35 by npineau           #+#    #+#             */
-/*   Updated: 2015/02/03 13:52:39 by npineau          ###   ########.fr       */
+/*   Updated: 2015/02/16 14:30:36 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ t_map			get_map(char const *const file)
 	i = 0;
 	while (get_next_line(fd, &line) > 0 && i < map.height)
 	{
-		map.map[i] = (int *)ft_strnew(map.width * sizeof(**map.map));
+		map.map[i] = (int *)ft_strnew((map.width + 1) * sizeof(**map.map));
 		fill_line(map.map[i], line, map.width);
 		free(line);
 		++i;
