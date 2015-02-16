@@ -6,13 +6,12 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/15 18:45:24 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/30 18:08:13 by npineau          ###   ########.fr       */
+/*   Updated: 2015/02/16 14:18:12 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "wolf3d.h"
-#include <stdio.h>
 
 int		key_press(int key, t_env *env)
 {
@@ -36,11 +35,11 @@ int		key_release(int key, t_env *env)
 	return (0);
 }
 
-void	hook_init(t_env const env)
+void	hook_init(t_env const *env)
 {
-	mlx_do_key_autorepeatoff(env.mlx);
-	mlx_hook(env.win.win, KeyPress, KeyPressMask, key_press, (void *)&env);
-	mlx_hook(env.win.win,
-			KeyRelease, KeyReleaseMask, key_release, (void *)&env);
-	mlx_loop_hook(env.mlx, render, (void *)&env);
+	mlx_do_key_autorepeatoff(env->mlx);
+	mlx_hook(env->win.win, KeyPress, KeyPressMask, key_press, (void *)env);
+	mlx_hook(env->win.win,
+			KeyRelease, KeyReleaseMask, key_release, (void *)env);
+	mlx_loop_hook(env->mlx, render, (void *)env);
 }

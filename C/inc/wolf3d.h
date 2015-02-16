@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:37:48 by npineau           #+#    #+#             */
-/*   Updated: 2015/02/03 13:38:03 by npineau          ###   ########.fr       */
+/*   Updated: 2015/02/16 14:16:39 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,7 @@ int					add_option(int const param, int const option);
 int					rem_option(int const param, int const option);
 t_map				get_map(char const *file);
 t_player			get_player(t_map const map);
-void				hook_init(t_env env);
+void				hook_init(t_env const *env);
 int					key_hook(int key_code, t_env *env);
 int					render(t_env *env);
 #endif
