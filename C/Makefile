@@ -6,7 +6,7 @@
 #    By: npineau <npineau@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/23 12:57:00 by npineau           #+#    #+#              #
-#    Updated: 2015/02/03 12:40:37 by npineau          ###   ########.fr        #
+#    Updated: 2015/02/16 14:27:30 by npineau          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ PMLX	:= $(DIRMLX)/libumlx.a
 
 ### COMPILATION VARIABLES ###
 
+CC		:= gcc
 C_FLAG	:=	-Wall -Wextra -Werror
 O_FLAG	:=	-O3
 
