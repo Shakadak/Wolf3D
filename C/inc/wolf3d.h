@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:37:48 by npineau           #+#    #+#             */
-/*   Updated: 2015/03/23 15:51:26 by npineau          ###   ########.fr       */
+/*   Updated: 2015/03/23 16:40:14 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@
 # include <mlx.h>
 # include "libft.h"
 # include "libumlx.h"
+
+# define KeyPress	2
+# define KeyRelease	3
+# define KeyPressMask	(1L<<0)
+# define KeyReleaseMask	(1L<<1)
 
 # define XK_Escape 53
 

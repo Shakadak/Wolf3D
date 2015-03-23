@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 13:48:00 by npineau           #+#    #+#             */
-/*   Updated: 2015/01/30 17:34:35 by npineau          ###   ########.fr       */
+/*   Updated: 2015/03/23 16:37:48 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ int			render(t_env *env)
 		++x;
 	}
 	apply_image(env->win, env->img, new_pos(0, 0, 0));
+	mlx_do_sync(env->mlx);
 	return (0);
 }
