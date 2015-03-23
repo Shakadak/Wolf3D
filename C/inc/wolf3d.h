@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:37:48 by npineau           #+#    #+#             */
-/*   Updated: 2015/02/16 14:16:39 by npineau          ###   ########.fr       */
+/*   Updated: 2015/03/23 15:51:26 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,34 @@
 # define WOLF3D_H
 
 # include <math.h>
-# include <X11/keysym.h>
-# include <X11/X.h>
 # include <mlx.h>
 # include "libft.h"
 # include "libumlx.h"
+
+# define XK_Escape 53
+
+# define XK_Left 123
+# define XK_Right 124
+# define XK_Down 125
+# define XK_Up 126
+
+# define XK_w 13
+# define XK_a 0
+# define XK_s 1
+# define XK_d 2
+# define XK_q 12
+# define XK_e 14
+
+# define XK_r 15
+# define XK_f 3
+# define XK_t 17
+# define XK_g 5
+
+# define XK_Shift_L 257
+# define XK_Ctrl_L 258
+# define XK_Space 49
+
+# define XK_1 18
 
 # define W_WIDTH 1366
 # define W_HEIGHT 768
