@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/23 13:48:00 by npineau           #+#    #+#             */
-/*   Updated: 2015/03/23 16:37:48 by npineau          ###   ########.fr       */
+/*   Updated: 2015/03/23 17:06:45 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ static void	draw_env(t_img const img, t_player const p)
 
 	start.pos = new_pos(0, 0, 0);
 	end.pos = new_pos(W_WIDTH, W_HEIGHT * p.cam.z / 2, 0);
-	start.color = new_color(176, 216, 230);
+	start.color = new_color(230, 216, 176, 0);
 	end.color = start.color;
 	draw_rectangle(img, start, end);
 	start.pos = new_pos(0, W_HEIGHT * p.cam.z / 2, 0);
 	end.pos = new_pos(W_WIDTH, W_HEIGHT, 0);
-	start.color = new_color(150, 75, 0);
+	start.color = new_color(0, 75, 150, 0);
 	end.color = start.color;
 	draw_rectangle(img, start, end);
 }
