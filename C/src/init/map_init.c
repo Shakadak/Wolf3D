@@ -6,7 +6,7 @@
 /*   By: npineau <npineau@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 17:47:35 by npineau           #+#    #+#             */
-/*   Updated: 2015/02/16 14:30:36 by npineau          ###   ########.fr       */
+/*   Updated: 2015/05/16 14:28:59 by npineau          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ t_map			get_map(char const *const file)
 		free(line);
 		++i;
 	}
+	free(line);
 	map.map[i] = NULL;
 	map.height = i;
 	close(fd);
