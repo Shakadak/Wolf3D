@@ -6,7 +6,7 @@
 #    By: npineau <npineau@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/23 12:57:00 by npineau           #+#    #+#              #
-#    Updated: 2015/02/16 14:27:30 by npineau          ###   ########.fr        #
+#    Updated: 2015/03/23 16:35:41 by npineau          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,11 +49,12 @@ O_FLAG	:=	-O3
 C_INC	:=	-I $(DIRINC) \
 			-I $(DIRFT)/$(DIRINC) \
 			-I $(DIRMLX)/$(DIRINC) \
-			-I /usr/x11/include
 
 L_FLAG	:=	-L $(DIRFT) -lft \
 			-L $(DIRMLX) -lumlx \
-			-L /usr/X11/lib -lmlx -lXext -lX11
+			-lmlx \
+			-framework OpenGL -framework AppKit \
+			-lm
 
 COMPIL	= $(CC) -o $@ -c $< $(C_INC) $(C_FLAG) $(O_FLAG)
 LINK	= $(CC) -o $@ $^ $(L_FLAG)
